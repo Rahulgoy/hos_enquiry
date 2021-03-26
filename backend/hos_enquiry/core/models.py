@@ -1,5 +1,7 @@
 from django.db import models
-
+from account.models import UserAccount as User
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 # Create your models here.
 speciality_choices = (
     ('Cardiologist', 'Cardiologist'),
@@ -28,13 +30,27 @@ rate = (
 )
 
 
-class Profile(models.Model):
+class Doctor(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100, unique=True)
-    image = models.ImageField()
+    image = models.ImageField(blank=True)
     """ speciality = models.MultipleCho """
     rating = models.PositiveSmallIntegerField(choices=rate)
     education = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
+
+
+class Specialities(models.Model):
+    user = models.ManyToManyField(User)
+    speciality = models.CharField(max_length=200)
+
+    def specialised(self):
+        return "\n".join([str(p) for p in self.user.all()])
+
+
+class Schedule(models.Model):
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    open = models.TimeField()
+    close = models.TimeField()
