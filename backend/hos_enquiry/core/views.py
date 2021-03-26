@@ -14,3 +14,28 @@ class DoctorLC(ListCreateAPIView):
 class DoctorRUD(RetrieveUpdateDestroyAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+
+class SpecialitiesLC(ListCreateAPIView):
+    queryset = Specialities.objects.all()
+    serializer_class = SpecialitiesSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+
+class SpecialitiesRUD(RetrieveUpdateDestroyAPIView):
+    queryset = Specialities.objects.all()
+    serializer_class = SpecialitiesSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+
+class ScheduleLC(ListCreateAPIView):
+    queryset = Schedule.objects.all()
+    serializer_class = ScheduleSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+
+class ScheduleRUD(RetrieveUpdateDestroyAPIView):
+    queryset = Schedule.objects.all()
+    serializer_class = ScheduleSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
