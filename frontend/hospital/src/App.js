@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
+import Doctors from "./containers/Doctors";
 import NotFound from "./components/NotFound";
 import store from "./store";
 import { Provider } from "react-redux";
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/doctors" component={Doctors} />
             <Route component={NotFound} />
           </Switch>
         </Layout>

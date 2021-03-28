@@ -139,7 +139,7 @@ const Footer = () => {
             <div class="col-md-6">
               <p>
                 &copy; Copyright 2019. All Rights Reserved by{" "}
-                <a href="#">Sttheme</a>
+                <a href="#">Health Connect</a>
               </p>
             </div>
             <div class="col-md-6 text-right link">

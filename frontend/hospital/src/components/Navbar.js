@@ -226,15 +226,15 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                   id="menu-item-388"
                   class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-388 dropdown "
                 >
-                  <a
+                  <Link
                     title="Doctors"
-                    href="#"
+                    to="/doctors"
                     class="dropdown-toggle smooth-menu"
                     data-toggle="dropdown"
                   >
                     Doctors
                     <span class="hidden-lg span-drop"></span>
-                  </a>
+                  </Link>
                 </li>
                 <li
                   id="menu-item-408"
