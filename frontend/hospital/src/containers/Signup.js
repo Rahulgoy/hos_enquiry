@@ -99,7 +99,7 @@ const Signup = ({ setAlert, signup, isAuthenticated }) => {
                             <span className="wpcf7-form-control-wrap Name">
                               <input
                                 type="text"
-                                name="Name"
+                                name="name"
                                 size="40"
                                 className="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control"
                                 id="name"
@@ -176,12 +176,15 @@ const Signup = ({ setAlert, signup, isAuthenticated }) => {
                             name="submit"
                             id="submit"
                             className="form-submit submit"
-                            value="Sign up"
+                            value="Register"
                           />
                         </div>
                       </div>
                     </div>
                   </form>
+                  <p>
+                    Already have an account? <Link to="/login"> Log In</Link>
+                  </p>
                 </div>
               </div>
             </div>

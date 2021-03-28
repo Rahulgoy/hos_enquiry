@@ -116,16 +116,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               >
                 <i class="fa fa-bars"></i>
               </button>
-              <a
-                class="navbar-brand"
-                href="https://sttheme.com/demosd/medihub/"
-              >
+              <Link class="navbar-brand" to="/">
                 <img
                   src="http://sttheme.com/demosd/medihub/wp-content/uploads/2019/06/logo.png"
                   class="logo"
                   alt="Logo"
                 />
-              </a>
+              </Link>
             </div>
             <div class="collapse navbar-collapse" id="navbar-menu">
               <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
@@ -133,14 +130,14 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                   id="menu-item-369"
                   class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children nav-item menu-item-369 dropdown  active"
                 >
-                  <a
+                  <Link
                     title="Home"
-                    href="#"
+                    to="/"
                     class="dropdown-toggle smooth-menu"
                     data-toggle="dropdown"
                   >
                     Home<span class="hidden-lg span-drop"></span>
-                  </a>
+                  </Link>
                 </li>
                 <li
                   id="menu-item-371"
