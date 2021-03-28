@@ -1,0 +1,406 @@
+/*
+Theme Name: medihub
+Theme URI: http://shtheme.com/demosd/medihub
+Author: Vergatheme
+Author URI: https://themeforest.net/user/vergatheme
+Description: In 2018, our default theme lets you create a responsive magazine website with a sleek, modern design. Feature your favorite homepage content in either a grid or a slider. Use the three widget areas to customize your website, and change your content's layout with a full-width page template and a contributor page to show off your authors. Creating a magazine website with WordPress has never been easier.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: two-columns, three-columns, left-sidebar, right-sidebar, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready
+Text Domain: medihub
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/* ========TABLE OF CONTENTS==========
+00. Body, links, hgroup, paragraphs, general styles
+01. Fixed header & Navigation
+02. Section Intro (Home)
+03. Section About
+04. Section Resume
+05. Section Portfolio
+06. Section Blog
+07. Section Contact
+08. Footer
+09. Loader
+10. Responsive design
+
+/*--------------------------------------------------
+    00. Body, links, hgroup, paragraphs, general styles
+---------------------------------------------------*/
+
+.comments-form .form-submit input {
+  border: 2px solid #0cb8b6;
+  background: transparent;
+  color: #232323;
+  display: inline-block;
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 25px;
+  margin-top: 20px;
+  padding: 12px 40px;
+  text-transform: uppercase;
+}
+.comments-form .form-submit input:hover {
+  color: #ffffff;
+  background-color: #0cb8b6;
+  border: 2px solid transparent;
+}
+.comments-area .comments-form .col-md-6 {
+  padding-left: 0px;
+}
+.comments-area .comments-form .col-md-6 + .col-md-6 {
+  padding-right: 0px;
+}
+#recent-posts-2 > .sidebar-title > h3 {
+  display: none;
+}
+.comments-area .comment-respond #reply-title {
+  border-bottom: 1px solid #e7e7e7;
+  font-weight: 700;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+.blog-area .sidebar aside .sidebar-item {
+  margin-bottom: 30px !important;
+}
+
+.blog-area .pagi-area .pagination li span {
+  border: 1px solid #e7e7e7;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: #232323;
+  font-weight: 600;
+  height: 50px;
+  line-height: 50px;
+  margin-right: 10px;
+  margin-top: 5px;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 50px;
+}
+.blog-area .pagi-area .pagination li span.current {
+  background: #0cb8b6 none repeat scroll 0 0;
+  border-color: transparent;
+  color: #ffffff;
+}
+.sidebar .nice-select .current {
+  color: #666666;
+}
+.appoinment form textarea {
+  max-height: 120px;
+}
+.sidebar .textwidget .appoinment form input#submit {
+  background: transparent;
+  padding: 10px 35px;
+  margin-top: 15px;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -ms-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out;
+  color: #232323;
+  border: 2px solid #0cb8b6;
+  background: transparent;
+}
+.sidebar .textwidget .appoinment form input#submit:hover {
+  background: #0cb8b6;
+  color: #ffffff;
+  border: 2px solid transparent;
+}
+.bg-dark.text-light .f-item > h2 {
+  display: none;
+}
+footer.bg-light .f-item > h2 {
+  display: none;
+}
+.appoinment .nice-select li[data-value="<option value="] {
+  display: none;
+}
+.appoinment .nice-select .option {
+  color: #333;
+}
+.banner-area .appoinment .appoinment-box .wpcf7-form-control#submit {
+  background: #0cb8b6;
+  border-radius: 30px;
+  color: #ffffff;
+  animation-delay: 0.9s;
+  padding: 10px 35px;
+  margin-top: 15px;
+  font-family: "Font Awesome 5 Free";
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  border: 2px solid #0cb8b6;
+}
+.appoinment .comments textarea {
+  border: 1px solid #e7e7e7;
+  padding: 15px;
+  min-height: 120px;
+  height: 34px;
+  border-radius: inherit;
+}
+.appoinment .comments textarea:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(102, 175, 233, 0.6);
+}
+.appoinment .appoinment-box .wpcf7-form-control#submit {
+  background: transparent;
+  padding: 10px 35px;
+  margin-top: 15px;
+  font-family: "Font Awesome 5 Free";
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -ms-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out;
+  color: #232323;
+  border: 2px solid #0cb8b6;
+  background: transparent;
+}
+.appoinment .appoinment-box #submit.wpcf7-form-control:hover {
+  background: #0cb8b6;
+  color: #ffffff;
+  border: 2px solid transparent;
+}
+.maps-area .google-maps .wpb_content_element {
+  margin-bottom: 0px;
+}
+.contact-area .contact-items input#submit {
+  padding: 15px 35px;
+  border: 2px solid #0cb8b6;
+  background: transparent;
+  font-family: "Font Awesome 5 Free";
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.blog-area .sidebar .widget.widget_categories,
+.blog-area .sidebar .widget.widget_archive,
+.blog-area .sidebar .widget.widget_tag_cloud {
+  float: left;
+  margin-bottom: 30px;
+  width: 100%;
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.blog-area .sidebar .sidebar-title {
+  display: block;
+}
+.blog-area .sidebar .sidebar-title h3 {
+  font-weight: 500;
+  margin-bottom: 25px;
+  margin-top: -5px;
+  padding-bottom: 15px;
+  position: relative;
+  text-transform: uppercase;
+  z-index: 1;
+  font-size: 18px;
+}
+.blog-area .sidebar .sidebar-title h3::before {
+  background: #0cb8b6 none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 40px;
+  z-index: -1;
+}
+.blog-area .sidebar .sidebar-title h3::after {
+  background: #0cb8b6 none repeat scroll 0 0;
+  bottom: 0;
+  content: "";
+  height: 2px;
+  left: 45px;
+  position: absolute;
+  width: 5px;
+  z-index: -1;
+}
+.blog-area .sidebar .widget.widget_categories ul,
+.blog-area .sidebar .widget.widget_archive ul {
+  margin-top: -5px;
+}
+.blog-area .sidebar .widget.widget_categories ul li,
+.blog-area .sidebar .widget.widget_archive ul li {
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid #e7e7e7;
+  position: relative;
+}
+.blog-area .sidebar .widget.widget_categories ul li {
+  text-align: right;
+}
+.blog-area .sidebar .widget.widget_categories ul li:first-child,
+.blog-area .sidebar .widget.widget_archive ul li:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+.blog-area .sidebar .widget.widget_categories ul li a,
+.blog-area .sidebar .widget.widget_archive ul li a {
+  display: inline-block;
+  text-transform: capitalize;
+  padding-left: 25px;
+}
+.blog-area .sidebar .widget.widget_categories ul li a {
+  float: left;
+}
+.blog-area .sidebar .widget.widget_categories > ul > li > a::after,
+.blog-area .sidebar .widget.widget_archive > ul > li > a::after {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  content: "\f07b";
+  font-family: "Font Awesome 5 Free";
+  height: 8px;
+  left: 0;
+  position: absolute;
+  width: 8px;
+  top: 10px;
+}
+.blog-area .sidebar .widget.widget_categories ul li:first-child a::after,
+.blog-area .sidebar .widget.widget_archive ul li:first-child a::after {
+  top: 0;
+}
+.blog-area .sidebar .widget.widget_categories ul li a:hover,
+.blog-area .sidebar .widget.widget_archive ul li a:hover {
+  color: #0cb8b6;
+}
+.blog-area .sidebar .widget.widget_tag_cloud ul.wp-tag-cloud li {
+  display: inline-block;
+}
+.blog-area .sidebar .widget.widget_tag_cloud ul.wp-tag-cloud li a {
+  background: #ffffff none repeat scroll 0 0;
+  border: 1px solid #e7e7e7;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  margin-right: 5px;
+  padding: 10px 20px;
+  text-transform: capitalize;
+  font-size: 13px !important;
+  color: #666666;
+}
+.blog-area .sidebar .widget.widget_tag_cloud ul.wp-tag-cloud li a:hover {
+  color: #0cb8b6;
+}
+
+nav.navbar.bootsnav ul.nav > li.dropdown > a.dropdown-toggle::after {
+  content: "\f107";
+  font-family: "Font Awesome 5 Free";
+  margin-left: 5px;
+  margin-top: 2px;
+}
+.newsletter-area
+  .col-md-12
+  .input-group.stylish-input-group
+  .wpcf7-form-control.wpcf7-submit {
+  font-family: "Font Awesome 5 Free";
+  position: absolute;
+  right: 0;
+  z-index: 9;
+  min-height: 60px;
+  border: 5px solid #ffffff;
+  width: 60px;
+  background: #0cb8b6;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  color: #ffffff;
+}
+footer .textwidget .input-group.stylish-input-group > input {
+  font-family: "Font Awesome 5 Free";
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0;
+  background: #0cb8b6;
+  color: #ffffff;
+  z-index: 9;
+  border: none;
+  line-height: 50px;
+  min-width: 50px;
+}
+@media (max-width: 1023px) {
+  nav.navbar.bootsnav li.dropdown a.dropdown-toggle:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: none;
+    float: right;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+}
+@media (max-width: 1023px) {
+  nav.navbar.bootsnav li.dropdown > a.dropdown-toggle:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f105";
+    float: right;
+    font-size: 16px;
+    margin-left: 10px;
+  }
+}
+.se-pre-con {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  background: url(../../images/preloader.gif) center no-repeat #fff;
+  text-align: center;
+}
+.comments-area.comments-area1 {
+  margin-top: 80px;
+}
+.form-control:focus {
+  border-color: #464646 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.nav-previous {
+  float: left;
+}
+.screen-reader-text {
+  display: none;
+}
+.page-id-229 footer.bg-dark {
+  color: #fff;
+}
+.navbar-brand > img {
+  height: 50px;
+}
