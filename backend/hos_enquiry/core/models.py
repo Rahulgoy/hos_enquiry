@@ -32,9 +32,8 @@ rate = (
 
 class Doctor(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100, unique=True)
+    email = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(blank=True)
-    """ speciality = models.MultipleCho """
     rating = models.PositiveSmallIntegerField(choices=rate)
     education = models.CharField(max_length=200)
 

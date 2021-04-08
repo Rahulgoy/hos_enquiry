@@ -7,14 +7,24 @@ import Alert from "./Alert";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authlinks = (
-    <li
-      id="menu-item-408"
-      class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
-    >
-      <a title="Contact" href="#" onClick={logout}>
-        Logout
-      </a>
-    </li>
+    <Fragment>
+      <li
+        id="menu-item-408"
+        class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
+      >
+        <Link title="Contact" to="/profile">
+          Profile
+        </Link>
+      </li>
+      <li
+        id="menu-item-408"
+        class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
+      >
+        <a title="Contact" href="#" onClick={logout}>
+          Logout
+        </a>
+      </li>
+    </Fragment>
   );
 
   const guestlinks = (

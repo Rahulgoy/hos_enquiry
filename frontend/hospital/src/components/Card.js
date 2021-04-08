@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-
+import { Link, NavLink } from "react-router-dom";
 const Card = (props) => {
   return (
     <Fragment>
@@ -45,7 +45,10 @@ const Card = (props) => {
                     </div>
                   </div>
                   <div className="info">
-                    <h4>{props.name}</h4>
+                    <Link to={{ pathname: `/profile/${props.id}` }}>
+                      <h4>{props.name}</h4>
+                    </Link>
+                    <h5>{props.education}</h5>
                     <h5>CARDIOLOGIST</h5>
                     <div className="appoinment-btn">
                       <a href="#">Make Appoinment</a>
