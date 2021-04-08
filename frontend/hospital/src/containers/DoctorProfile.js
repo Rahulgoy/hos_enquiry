@@ -11,14 +11,13 @@ const DoctorProfile = (props) => {
     education: "",
     schedule: null,
   });
+  const [DoctorSchedule, setDoctorSchedule] = useState([]);
 
   const fetchProfiles = async () => {
     setLoading(true);
-    console.log(`http://localhost:8000/api/doctor/profile/${props.pid}/`);
     axios
       .get(`http://localhost:8000/api/doctor/profile/${props.pid}/`)
       .then((response) => {
-        console.log(response.data);
         setProfiles({
           name: response.data.name,
           email: response.data.email,
@@ -26,14 +25,32 @@ const DoctorProfile = (props) => {
           rating: response.data.rating,
           education: response.data.education,
         });
-        console.log(profiles);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  const fetchSchedule = async () => {
+    setLoading(true);
+    axios
+      .get(`http://localhost:8000/api/doctor/schedule/`)
+      .then((response) => {
+        const Schedule = response.data.results;
+        console.log(Schedule.doctor);
+        const newSchedule = Schedule.filter((sche) => {
+          return sche.doctor.toLowerCase() === profiles.name.toLowerCase();
+        });
+        setDoctorSchedule(newSchedule);
+        console.log(DoctorSchedule);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     fetchProfiles();
+    fetchSchedule();
   }, []);
 
   return (
@@ -136,27 +153,18 @@ const DoctorProfile = (props) => {
                         bed.
                       </p>
                       <ul>
-                        <li>
-                          {" "}
-                          <span> Mon &#8211; Tues : </span>
-                          <div class="pull-right">
-                            {" "}
-                            6.00 am &#8211; 10.00 pm{" "}
-                          </div>
-                        </li>
-                        <li>
-                          {" "}
-                          <span> Wednes &#8211; Thurs :</span>
-                          <div class="pull-right">
-                            {" "}
-                            8.00 am &#8211; 6.00 pm{" "}
-                          </div>
-                        </li>
-                        <li>
-                          {" "}
-                          <span> Sun : </span>
-                          <div class="pull-right closed"> Closed </div>
-                        </li>
+                        {DoctorSchedule.map((doctor) => {
+                          return (
+                            <li key={doctor.id}>
+                              {" "}
+                              <span> {doctor.day} : </span>
+                              <div class="pull-right">
+                                {" "}
+                                {doctor.open} &#8211; {doctor.close}{" "}
+                              </div>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   </div>

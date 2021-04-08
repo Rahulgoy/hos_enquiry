@@ -11,7 +11,7 @@ class DoctorSerializer(serializers.ModelSerializer):
 class ScheduleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Schedule
-        fields = ['doctor', 'open', 'close']
+        fields = ['doctor', 'day', 'open', 'close']
 
 
 class SpecialitiesSerializer(serializers.ModelSerializer):

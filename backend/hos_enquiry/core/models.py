@@ -2,6 +2,7 @@ from django.db import models
 from account.models import UserAccount as User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+import weekday_field
 # Create your models here.
 speciality_choices = (
     ('Cardiologist', 'Cardiologist'),
@@ -51,5 +52,6 @@ class Specialities(models.Model):
 
 class Schedule(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    day = models.CharField(max_length=50, default='')
     open = models.TimeField()
     close = models.TimeField()
