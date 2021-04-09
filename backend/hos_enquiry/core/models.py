@@ -32,14 +32,23 @@ rate = (
 
 
 class Doctor(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, default="DoctorName")
     email = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(blank=True)
-    rating = models.PositiveSmallIntegerField(choices=rate)
-    education = models.CharField(max_length=200)
+    image = models.ImageField(blank=True, default='default.jpg')
+    rating = models.PositiveSmallIntegerField(choices=rate, default=5)
+    education = models.CharField(
+        max_length=200, default="Description/Education")
 
     def __str__(self):
         return self.name
+
+
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Doctor.objects.create(email=instance)
+
+
+post_save.connect(create_profile, sender=User)
 
 
 class Specialities(models.Model):

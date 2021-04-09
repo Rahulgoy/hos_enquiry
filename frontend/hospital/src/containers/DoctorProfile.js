@@ -36,10 +36,12 @@ const DoctorProfile = (props) => {
       .get(`http://localhost:8000/api/doctor/schedule/`)
       .then((response) => {
         const Schedule = response.data.results;
-        console.log(Schedule.doctor);
+        console.log(Schedule);
         const newSchedule = Schedule.filter((sche) => {
-          return sche.doctor.toLowerCase() === profiles.name.toLowerCase();
+          return sche.doctor === parseInt(props.pid);
         });
+        /* console.log(props.pid);
+        console.log(newSchedule); */
         setDoctorSchedule(newSchedule);
         console.log(DoctorSchedule);
       })
