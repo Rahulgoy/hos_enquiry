@@ -9,7 +9,7 @@ const DoctorProfile = (props) => {
     image: null,
     rating: "",
     education: "",
-    schedule: null,
+    description: "",
   });
   const [DoctorSchedule, setDoctorSchedule] = useState([]);
   const [DoctorSpeciality, setDoctorSpeciality] = useState([]);
@@ -25,6 +25,7 @@ const DoctorProfile = (props) => {
           image: response.data.image,
           rating: response.data.rating,
           education: response.data.education,
+          description: response.data.description,
         });
         console.log(profiles);
       })
@@ -147,8 +148,8 @@ const DoctorProfile = (props) => {
                     </pre>
                   );
                 })}
-
-                <p>Description</p>
+                <br></br>
+                <p>{profiles.description}</p>
                 <p>
                   <a class="btn btn-theme border btn-md" href="#">
                     Make Appoinment
@@ -160,14 +161,6 @@ const DoctorProfile = (props) => {
                     <a data-toggle="tab" href="#tab1" aria-expanded="true">
                       <br />
                       Working Works
-                      <br />
-                    </a>
-                  </li>
-                  <li>
-                    <a data-toggle="tab" href="#tab2" aria-expanded="false">
-                      <br />
-                      Experience
-                      <br />
                     </a>
                   </li>
                 </ul>

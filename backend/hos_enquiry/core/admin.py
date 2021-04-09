@@ -5,7 +5,8 @@ from .models import Doctor, Schedule, Specialities
 
 @admin.register(Doctor)
 class DoctorAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'image', 'rating', 'education']
+    list_display = ['name', 'email', 'image',
+                    'rating', 'education', 'description']
 
 
 @admin.register(Schedule)

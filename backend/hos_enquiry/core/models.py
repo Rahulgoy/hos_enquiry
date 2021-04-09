@@ -38,6 +38,7 @@ class Doctor(models.Model):
     rating = models.PositiveSmallIntegerField(choices=rate, default=5)
     education = models.CharField(
         max_length=200, default="Description/Education")
+    description = models.TextField(default="Description of Doctor")
 
     def __str__(self):
         return self.name
