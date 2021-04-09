@@ -56,7 +56,7 @@ class Specialities(models.Model):
     speciality = models.CharField(max_length=200)
 
     def specialised(self):
-        return "\n".join([str(p) for p in self.user.all()])
+        return " ".join([str(p) for p in self.user.all()])
 
 
 class Schedule(models.Model):

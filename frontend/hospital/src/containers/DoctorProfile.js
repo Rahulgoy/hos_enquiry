@@ -12,6 +12,7 @@ const DoctorProfile = (props) => {
     schedule: null,
   });
   const [DoctorSchedule, setDoctorSchedule] = useState([]);
+  const [DoctorSpeciality, setDoctorSpeciality] = useState([]);
 
   const fetchProfiles = async () => {
     setLoading(true);
@@ -25,6 +26,7 @@ const DoctorProfile = (props) => {
           rating: response.data.rating,
           education: response.data.education,
         });
+        console.log(profiles);
       })
       .catch((error) => {
         console.log(error);
@@ -36,23 +38,46 @@ const DoctorProfile = (props) => {
       .get(`http://localhost:8000/api/doctor/schedule/`)
       .then((response) => {
         const Schedule = response.data.results;
-        console.log(Schedule);
+
         const newSchedule = Schedule.filter((sche) => {
           return sche.doctor === parseInt(props.pid);
         });
         /* console.log(props.pid);
         console.log(newSchedule); */
         setDoctorSchedule(newSchedule);
-        console.log(DoctorSchedule);
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  const fetchspeciality = async () => {
+    setLoading(true);
+    axios
+      .get(`http://127.0.0.1:8000/api/doctor/speciality/`)
+      .then((response) => {
+        console.log(response.data.results);
 
+        const specialities = response.data.results;
+        const filspecial = specialities.filter((speciality) => {
+          console.log(Object.values(speciality).join(" ").toLowerCase());
+          console.log(profiles.name.toLowerCase());
+          return Object.values(speciality)
+            .join(" ")
+            .toLowerCase()
+            .includes(profiles.name.toLowerCase());
+        });
+
+        setDoctorSpeciality(filspecial);
+        console.log(DoctorSpeciality);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   useEffect(() => {
     fetchProfiles();
     fetchSchedule();
+    fetchspeciality();
   }, []);
 
   return (
@@ -115,7 +140,14 @@ const DoctorProfile = (props) => {
               <div class="info">
                 <h2>{profiles.name}</h2>
                 <h4>{profiles.education}</h4>
-                <p>Specialities</p>
+                {DoctorSpeciality.map((doctor) => {
+                  return (
+                    <pre style={{ display: "table-cell" }} key={doctor.id}>
+                      {doctor.speciality}
+                    </pre>
+                  );
+                })}
+
                 <p>Description</p>
                 <p>
                   <a class="btn btn-theme border btn-md" href="#">
