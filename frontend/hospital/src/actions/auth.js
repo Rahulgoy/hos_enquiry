@@ -26,6 +26,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,
+      email: email,
     });
 
     dispatch(setAlert("Authenticated Successfully", "success"));

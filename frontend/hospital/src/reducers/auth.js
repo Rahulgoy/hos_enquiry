@@ -10,19 +10,21 @@ const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticated: null,
   loading: false,
+  email: "",
 };
 
 export default function (state = initialState, action) {
-  const { type, payload } = action;
+  const { type, payload, email } = action;
 
   switch (type) {
     case LOGIN_SUCCESS:
-      localStorage.setItem("token", payload.access); //assign value from payload-access token to token in local storage
+      localStorage.setItem("token", JSON.stringify(payload.access)); //assign value from payload-access token to token in local storage
       return {
         ...(state, []),
         token: payload.access,
         isAuthenticated: true,
         loading: false,
+        email: email,
       };
     case SIGNUP_SUCCESS:
       return {

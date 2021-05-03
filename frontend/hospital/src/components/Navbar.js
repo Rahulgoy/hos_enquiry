@@ -6,13 +6,14 @@ import PropTypes from "prop-types";
 import Alert from "./Alert";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+  var retrievedObject = localStorage.getItem("token");
   const authlinks = (
     <Fragment>
       <li
         id="menu-item-408"
         className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
-        <Link title="Contact" to="/profile/:pid">
+        <Link title="Contact" to="/profile">
           Profile
         </Link>
       </li>
@@ -166,76 +167,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                     Pages<span className="hidden-lg span-drop"></span>
                   </a>
                 </li>
-                <li
-                  id="menu-item-382"
-                  className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-382 dropdown "
-                >
-                  <a
-                    title="Departments"
-                    href="#"
-                    className="dropdown-toggle smooth-menu"
-                    data-toggle="dropdown"
-                  >
-                    Departments<span className="hidden-lg span-drop"></span>
-                  </a>
-                  <ul role="menu" className="dropdown-menu animated #">
-                    <li
-                      id="menu-item-383"
-                      className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-383"
-                    >
-                      <a
-                        title="Medecine And Health"
-                        href="http://sttheme.com/demosd/medihub/?services=medecine-and-health"
-                      >
-                        Medecine And Health
-                      </a>
-                    </li>
-                    <li
-                      id="menu-item-384"
-                      className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-384"
-                    >
-                      <a
-                        title="Dental Care and Surgery"
-                        href="http://sttheme.com/demosd/medihub/?services=dental-care-and-surgery"
-                      >
-                        Dental Care and Surgery
-                      </a>
-                    </li>
-                    <li
-                      id="menu-item-385"
-                      className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-385"
-                    >
-                      <a
-                        title="Eye Treatment"
-                        href="http://sttheme.com/demosd/medihub/?services=eye-treatment"
-                      >
-                        Eye Treatment
-                      </a>
-                    </li>
-                    <li
-                      id="menu-item-386"
-                      className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-386"
-                    >
-                      <a
-                        title="Children Chare"
-                        href="http://sttheme.com/demosd/medihub/?services=children-chare"
-                      >
-                        Children Chare
-                      </a>
-                    </li>
-                    <li
-                      id="menu-item-387"
-                      className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-387"
-                    >
-                      <a
-                        title="Traumatology"
-                        href="http://sttheme.com/demosd/medihub/?services=nuclear-magnetic"
-                      >
-                        Traumatology
-                      </a>
-                    </li>
-                  </ul>
-                </li>
+
                 <li
                   id="menu-item-388"
                   className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-388 dropdown "
@@ -263,7 +195,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                 </li>
                 {!loading && (
                   <Fragment>
-                    {isAuthenticated ? authlinks : guestlinks}
+                    {isAuthenticated || retrievedObject
+                      ? authlinks
+                      : guestlinks}
                   </Fragment>
                 )}
               </ul>

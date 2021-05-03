@@ -1,6 +1,10 @@
 import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import { Link, NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import IconButton from "@material-ui/core/IconButton";
+import EditIcon from "@material-ui/icons/Edit";
+import { Tooltip } from "@material-ui/core";
 const DoctorProfile = (props) => {
   const [loading, setLoading] = useState(true);
   const [profiles, setProfiles] = useState({
@@ -13,6 +17,11 @@ const DoctorProfile = (props) => {
     speciality: [],
   });
   const [DoctorSchedule, setDoctorSchedule] = useState([]);
+  if (profiles.email === props.auth.email) {
+    console.log("true");
+    console.log(profiles.email);
+    console.log(props.auth.email);
+  }
 
   const fetchProfiles = async () => {
     setLoading(true);
@@ -51,7 +60,35 @@ const DoctorProfile = (props) => {
         console.log(error);
       });
   };
+  const handleImageChange = async (e) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const image = e.target.files[0];
 
+    const fd = new FormData();
+    fd.append("image", image, image.name);
+    fd.append("_method", "PATCH");
+    try {
+      const res = await axios.patch(
+        `http://localhost:8000/api/doctor/profile/${props.pid}/`,
+        fd,
+        config
+      );
+
+      setTimeout("window.location.reload();", 2000);
+
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleEditPicture = () => {
+    const fileInput = document.getElementById("imageInput");
+    fileInput.click();
+  };
   useEffect(() => {
     fetchProfiles();
     fetchSchedule();
@@ -87,6 +124,7 @@ const DoctorProfile = (props) => {
             <div class="col-md-4">
               <div class="thumb">
                 <img src={profiles.image} alt="Thumb" />
+
                 <div class="overlay">
                   <ul>
                     <li>
@@ -112,6 +150,18 @@ const DoctorProfile = (props) => {
                   </ul>
                 </div>
               </div>
+              <input
+                type="file"
+                id="imageInput"
+                display="hidden"
+                style={{ display: "hidden" }}
+                onChange={handleImageChange}
+              />
+              <Tooltip title="Edit Profile Picture" placement="top">
+                <IconButton onClick={handleEditPicture} className="button">
+                  <EditIcon color="primary" />
+                </IconButton>
+              </Tooltip>
             </div>
             <div class="col-md-8">
               <div class="info">
@@ -180,5 +230,7 @@ const DoctorProfile = (props) => {
     </Fragment>
   );
 };
-
-export default DoctorProfile;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+export default connect(mapStateToProps)(DoctorProfile);
