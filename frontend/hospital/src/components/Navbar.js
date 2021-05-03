@@ -10,15 +10,15 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <Fragment>
       <li
         id="menu-item-408"
-        class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
+        className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
-        <Link title="Contact" to="/profile">
+        <Link title="Contact" to="/profile/:pid">
           Profile
         </Link>
       </li>
       <li
         id="menu-item-408"
-        class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
+        className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
         <a title="Contact" href="#" onClick={logout}>
           Logout
@@ -31,7 +31,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <Fragment>
       <li
         id="menu-item-408"
-        class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
+        className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
         <Link title="Contact" to="/login">
           LogIn
@@ -39,7 +39,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
       <li
         id="menu-item-408"
-        class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
+        className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
         <Link title="Contact" to="/signup">
           SignUp
@@ -49,30 +49,30 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   return (
-    <body class="home page-template page-template-page-templates page-template-home page-template-page-templateshome-php page page-id-44 wpb-js-composer js-comp-ver-5.4.7 vc_responsive">
-      <div class="se-pre-con"></div>
-      <div class="top-bar-area inline inc-border">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 address-info text-left">
-              <div class="info box">
+    <body className="home page-template page-template-page-templates page-template-home page-template-page-templateshome-php page page-id-44 wpb-js-composer js-comp-ver-5.4.7 vc_responsive">
+      <div className="se-pre-con"></div>
+      <div className="top-bar-area inline inc-border">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8 address-info text-left">
+              <div className="info box">
                 <ul>
                   <li>
-                    <i class="fas fa-map-marker-alt"></i>
+                    <i className="fas fa-map-marker-alt"></i>
                     California, TX 70240
                   </li>
                   <li>
-                    <i class="fas fa-envelope-open"></i>
+                    <i className="fas fa-envelope-open"></i>
                     Info@gmail.com
                   </li>
                   <li>
-                    <i class="fas fa-phone"></i>
+                    <i className="fas fa-phone"></i>
                     Call Us : +02151 7778 009
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="col-md-4 bar-btn text-right">
+            <div className="col-md-4 bar-btn text-right">
               <a href="#">MAKE APPOINMENT</a>
             </div>
           </div>
@@ -80,21 +80,21 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </div>
 
       <header id="home">
-        <nav class="navbar navbar-default attr-border navbar-sticky bootsnav">
-          <div class="container">
-            <div class="row">
-              <div class="top-search">
-                <div class="input-group">
+        <nav className="navbar navbar-default attr-border navbar-sticky bootsnav">
+          <div className="container">
+            <div className="row">
+              <div className="top-search">
+                <div className="input-group">
                   <form action="https://sttheme.com/demosd/medihub/">
                     <input
                       type="text"
                       name="s"
                       id="s"
-                      class="form-control"
+                      className="form-control"
                       placeholder="Search"
                     />
                     <button type="submit">
-                      <i class="fas fa-search"></i>
+                      <i className="fas fa-search"></i>
                     </button>
                   </form>
                 </div>
@@ -102,82 +102,86 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
             </div>
           </div>
 
-          <div class="container">
-            <div class="attr-nav">
+          <div className="container">
+            <div className="attr-nav">
               <ul>
-                <li class="search">
+                <li className="search">
                   <a href="#">
-                    <i class="fa fa-search"></i>
+                    <i className="fa fa-search"></i>
                   </a>
                 </li>
-                <li class="side-menu">
+                <li className="side-menu">
                   <a href="#">
-                    <i class="fa fa-bars"></i>
+                    <i className="fa fa-bars"></i>
                   </a>
                 </li>
               </ul>
             </div>
-            <div class="navbar-header">
+            <div className="navbar-header">
               <button
                 type="button"
-                class="navbar-toggle"
+                className="navbar-toggle"
                 data-toggle="collapse"
                 data-target="#navbar-menu"
               >
-                <i class="fa fa-bars"></i>
+                <i className="fa fa-bars"></i>
               </button>
-              <Link class="navbar-brand" to="/">
+              <Link className="navbar-brand" to="/">
                 <img
                   src="http://sttheme.com/demosd/medihub/wp-content/uploads/2019/06/logo.png"
-                  class="logo"
+                  className="logo"
                   alt="Logo"
                 />
               </Link>
             </div>
-            <div class="collapse navbar-collapse" id="navbar-menu">
-              <ul class="nav navbar-nav navbar-right" data-in="#" data-out="#">
+            <div className="collapse navbar-collapse" id="navbar-menu">
+              <ul
+                className="nav navbar-nav navbar-right"
+                data-in="#"
+                data-out="#"
+              >
                 <li
                   id="menu-item-369"
-                  class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children nav-item menu-item-369 dropdown  active"
+                  className="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children nav-item menu-item-369 dropdown  active"
                 >
                   <Link
                     title="Home"
                     to="/"
-                    class="dropdown-toggle smooth-menu"
+                    className="dropdown-toggle smooth-menu"
                     data-toggle="dropdown"
                   >
-                    Home<span class="hidden-lg span-drop"></span>
+                    Home<span className="hidden-lg span-drop"></span>
                   </Link>
                 </li>
                 <li
                   id="menu-item-371"
-                  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-371 dropdown "
+                  className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-371 dropdown "
                 >
                   <a
                     title="Pages"
                     href="#"
-                    class="dropdown-toggle smooth-menu"
+                    className="dropdown-toggle smooth-menu"
                     data-toggle="dropdown"
                   >
-                    Pages<span class="hidden-lg span-drop"></span>
+                    Pages<span className="hidden-lg span-drop"></span>
                   </a>
                 </li>
                 <li
                   id="menu-item-382"
-                  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-382 dropdown "
+                  className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-382 dropdown "
                 >
                   <a
                     title="Departments"
                     href="#"
-                    class="dropdown-toggle smooth-menu"
+                    className="dropdown-toggle smooth-menu"
                     data-toggle="dropdown"
                   >
-                    Departments<span class="hidden-lg span-drop"></span>
+                    Departments<span className="hidden-lg span-drop"></span>
                   </a>
-                  <ul role="menu" class="dropdown-menu animated #">
+                  <ul role="menu" className="dropdown-menu animated #">
                     <li
                       id="menu-item-383"
-                      class="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-383"
+                      className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-383"
                     >
                       <a
                         title="Medecine And Health"
@@ -188,7 +192,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                     </li>
                     <li
                       id="menu-item-384"
-                      class="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-384"
+                      className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-384"
                     >
                       <a
                         title="Dental Care and Surgery"
@@ -199,7 +203,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                     </li>
                     <li
                       id="menu-item-385"
-                      class="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-385"
+                      className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-385"
                     >
                       <a
                         title="Eye Treatment"
@@ -210,7 +214,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                     </li>
                     <li
                       id="menu-item-386"
-                      class="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-386"
+                      className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-386"
                     >
                       <a
                         title="Children Chare"
@@ -221,7 +225,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                     </li>
                     <li
                       id="menu-item-387"
-                      class="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-387"
+                      className="menu-item menu-item-type-custom menu-item-object-custom nav-item menu-item-387"
                     >
                       <a
                         title="Traumatology"
@@ -234,21 +238,21 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                 </li>
                 <li
                   id="menu-item-388"
-                  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-388 dropdown "
+                  className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-388 dropdown "
                 >
                   <Link
                     title="Doctors"
                     to="/doctors"
-                    class="dropdown-toggle smooth-menu"
+                    className="dropdown-toggle smooth-menu"
                     data-toggle="dropdown"
                   >
                     Doctors
-                    <span class="hidden-lg span-drop"></span>
+                    <span className="hidden-lg span-drop"></span>
                   </Link>
                 </li>
                 <li
                   id="menu-item-408"
-                  class="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
+                  className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
                 >
                   <a
                     title="Contact"

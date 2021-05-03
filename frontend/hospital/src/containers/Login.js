@@ -82,7 +82,7 @@ const Login = ({ login, isAuthenticated }) => {
                     action="/demosd/medihub/?page_id=282#wpcf7-f234-p282-o1"
                     method="POST"
                     className="wpcf7-form init"
-                    novalidate="novalidate"
+                    noValidate="noValidate"
                     data-status="init"
                     onSubmit={(e) => onSubmit(e)}
                   >

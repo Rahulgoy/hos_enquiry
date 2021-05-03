@@ -2,7 +2,7 @@ from django.db import models
 from account.models import UserAccount as User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-import weekday_field
+from multiselectfield import MultiSelectField
 # Create your models here.
 speciality_choices = (
     ('Cardiologist', 'Cardiologist'),
@@ -39,9 +39,14 @@ class Doctor(models.Model):
     education = models.CharField(
         max_length=200, default="Description/Education")
     description = models.TextField(default="Description of Doctor")
+    speciality = MultiSelectField(
+        choices=speciality_choices, max_length=100, blank=True)
 
     def __str__(self):
         return self.name
+
+    def specialised(self):
+        return "-".join([str(p) for p in self.speciality.all()])
 
 
 def create_profile(sender, instance, created, **kwargs):
@@ -51,13 +56,14 @@ def create_profile(sender, instance, created, **kwargs):
 
 post_save.connect(create_profile, sender=User)
 
-
+""" 
 class Specialities(models.Model):
     user = models.ManyToManyField(User)
     speciality = models.CharField(max_length=200)
 
     def specialised(self):
-        return " ".join([str(p) for p in self.user.all()])
+        return "-".join([str(p) for p in self.user.all()])
+ """
 
 
 class Schedule(models.Model):

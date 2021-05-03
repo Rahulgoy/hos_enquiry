@@ -10,9 +10,11 @@ const DoctorsCard = ({ doctors }) => {
         <div className="row">
           <div className="doctor-items text-center">
             <div className="col-md-4 equal-height">
-              {doctors.map((doctor) => {
-                return <Card key={doctor.id} {...doctor}></Card>;
-              })}
+              {doctors
+                ? doctors.map((doctor) => {
+                    return <Card key={doctor.id} {...doctor}></Card>;
+                  })
+                : null}
             </div>
           </div>
         </div>

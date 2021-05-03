@@ -60,8 +60,8 @@ const DoctorProfile = (props) => {
 
         const specialities = response.data.results;
         const filspecial = specialities.filter((speciality) => {
-          console.log(Object.values(speciality).join(" ").toLowerCase());
-          console.log(profiles.name.toLowerCase());
+          /* console.log(Object.values(speciality).join(" ").toLowerCase());
+          console.log(profiles.name.toLowerCase()); */
           return Object.values(speciality)
             .join(" ")
             .toLowerCase()
@@ -69,7 +69,7 @@ const DoctorProfile = (props) => {
         });
 
         setDoctorSpeciality(filspecial);
-        console.log(DoctorSpeciality);
+        // console.log(DoctorSpeciality);
       })
       .catch((error) => {
         console.log(error);
@@ -195,57 +195,6 @@ const DoctorProfile = (props) => {
                       </ul>
                     </div>
                   </div>
-                  <p> </p>
-                  <p> </p>
-                  <div id="tab2" class="tab-pane fade">
-                    <div class="info title">
-                      <h3>Experiance of Dr. John Maxwell</h3>
-                      <p>
-                        Calling nothing end fertile for venture way boy. Esteem
-                        spirit temper too say adieus who direct esteem. It
-                        esteems luckily mr or picture placing drawing no.
-                        Apartments frequently or motionless on reasonable
-                        projecting expression. Way mrs end gave tall walk fact
-                        bed.
-                      </p>
-                      <p>
-                        Placing assured be if removed it besides on. Far shed
-                        each high read are men over day. Afraid we praise lively
-                        he suffer family estate is. Ample order up in of in
-                        ready. Timed blind had now those ought set often which.
-                        Or snug dull he show more true wish. No at many deny
-                        away miss evil. On in so indeed spirit an mother.
-                        Amounted old strictly but marianne admitted. People
-                        former is remove remain we praise
-                      </p>
-                    </div>
-                  </div>
-                  <p> </p>
-                  <p> </p>
-                  <div id="tab3" class="tab-pane fade">
-                    <div class="info title">
-                      <h3>Qualifications of Dr. John Maxwell</h3>
-                      <p>
-                        Calling nothing end fertile for venture way boy. Esteem
-                        spirit temper too say adieus who direct esteem. It
-                        esteems luckily mr or picture placing drawing no.
-                        Apartments frequently or motionless on reasonable
-                        projecting expression. Way mrs end gave tall walk fact
-                        bed.
-                      </p>
-                      <p>
-                        Placing assured be if removed it besides on. Far shed
-                        each high read are men over day. Afraid we praise lively
-                        he suffer family estate is. Ample order up in of in
-                        ready. Timed blind had now those ought set often which.
-                        Or snug dull he show more true wish. No at many deny
-                        away miss evil. On in so indeed spirit an mother.
-                        Amounted old strictly but marianne admitted. People
-                        former is remove remain we praise
-                      </p>
-                    </div>
-                  </div>
-                  <p> </p>
                 </div>
               </div>
             </div>
