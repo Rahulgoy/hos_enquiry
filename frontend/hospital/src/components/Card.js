@@ -49,7 +49,16 @@ const Card = (props) => {
                       <h4>{props.name}</h4>
                     </Link>
                     <h5>{props.education}</h5>
-                    <h5>CARDIOLOGIST</h5>
+
+                    {props.speciality.map((spec) => {
+                      return (
+                        <span>
+                          {spec}
+                          {"  "}
+                        </span>
+                      );
+                    })}
+
                     <div className="appoinment-btn">
                       <a href="#">Make Appoinment</a>
                     </div>

@@ -29,42 +29,18 @@ const Doctors = ({ auth }) => {
   const fetchfilteredDoctors = (input) => {
     if (input) {
       setSearch(input);
-      axios
-        .get(`http://127.0.0.1:8000/api/doctor/speciality/`)
-        .then((response) => {
-          //console.log(response.data.results);
 
-          const specialities = response.data.results;
+      //console.log(response.data.results);
 
-          const special = specialities.filter((speciality) => {
-            return Object.values(speciality)
-              .join(" ")
-              .toLowerCase()
-              .includes(input.toLowerCase());
-          });
+      const special = doctors.filter((doctor) => {
+        return Object.values(doctor)
+          .join(" ")
+          .toLowerCase()
+          .includes(input.toLowerCase());
+      });
 
-          special.map((spec) => {
-            //console.log(spec.specialised.split("-"));
-            setspecialisedDoctors(spec.specialised.split("-"));
-          });
-          specialisedDoctors.map((doctor) => {
-            //console.log(doctor);
-            const doc = doctors.filter((doctor1) => {
-              return doctor1.name === doctor;
-            });
-
-            doc.map((d) => {
-              if (filteredDoctors) {
-                setfilteredDoctors((filteredDoctors) => [
-                  ...filteredDoctors,
-                  d,
-                ]);
-              }
-            });
-          });
-        });
-      const unique = [...new Set(filteredDoctors)];
-      setfilteredDoctors(unique);
+      //console.log(special);
+      setfilteredDoctors(special);
     }
   };
   useEffect(() => {
@@ -114,5 +90,6 @@ const Doctors = ({ auth }) => {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 export default connect(mapStateToProps)(Doctors);

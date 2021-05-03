@@ -10,9 +10,9 @@ const DoctorProfile = (props) => {
     rating: "",
     education: "",
     description: "",
+    speciality: [],
   });
   const [DoctorSchedule, setDoctorSchedule] = useState([]);
-  const [DoctorSpeciality, setDoctorSpeciality] = useState([]);
 
   const fetchProfiles = async () => {
     setLoading(true);
@@ -26,8 +26,8 @@ const DoctorProfile = (props) => {
           rating: response.data.rating,
           education: response.data.education,
           description: response.data.description,
+          speciality: response.data.speciality,
         });
-        console.log(profiles);
       })
       .catch((error) => {
         console.log(error);
@@ -51,36 +51,12 @@ const DoctorProfile = (props) => {
         console.log(error);
       });
   };
-  const fetchspeciality = async () => {
-    setLoading(true);
-    axios
-      .get(`http://127.0.0.1:8000/api/doctor/speciality/`)
-      .then((response) => {
-        console.log(response.data.results);
 
-        const specialities = response.data.results;
-        const filspecial = specialities.filter((speciality) => {
-          /* console.log(Object.values(speciality).join(" ").toLowerCase());
-          console.log(profiles.name.toLowerCase()); */
-          return Object.values(speciality)
-            .join(" ")
-            .toLowerCase()
-            .includes(profiles.name.toLowerCase());
-        });
-
-        setDoctorSpeciality(filspecial);
-        // console.log(DoctorSpeciality);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   useEffect(() => {
     fetchProfiles();
     fetchSchedule();
-    fetchspeciality();
   }, []);
-
+  console.log(profiles);
   return (
     <Fragment>
       <div
@@ -141,10 +117,10 @@ const DoctorProfile = (props) => {
               <div class="info">
                 <h2>{profiles.name}</h2>
                 <h4>{profiles.education}</h4>
-                {DoctorSpeciality.map((doctor) => {
+                {profiles.speciality.map((doctor) => {
                   return (
                     <pre style={{ display: "table-cell" }} key={doctor.id}>
-                      {doctor.speciality}
+                      {doctor}
                     </pre>
                   );
                 })}
