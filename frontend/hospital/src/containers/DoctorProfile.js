@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import { Tooltip } from "@material-ui/core";
+import EditDoctorProfile from "../components/EditDoctorProfile";
 const DoctorProfile = (props) => {
   const [loading, setLoading] = useState(true);
   const [profiles, setProfiles] = useState({
@@ -60,6 +61,8 @@ const DoctorProfile = (props) => {
         console.log(error);
       });
   };
+
+  /// Image Upload
   const handleImageChange = async (e) => {
     const config = {
       headers: {
@@ -93,7 +96,7 @@ const DoctorProfile = (props) => {
     fetchProfiles();
     fetchSchedule();
   }, []);
-  console.log(profiles);
+  // console.log(profiles);
   return (
     <Fragment>
       <div
@@ -165,7 +168,10 @@ const DoctorProfile = (props) => {
             </div>
             <div class="col-md-8">
               <div class="info">
-                <h2>{profiles.name}</h2>
+                <div class="edit" style={{ display: "flex" }}>
+                  <h2>{profiles.name}</h2>
+                  <EditDoctorProfile pid={props.pid} />
+                </div>
                 <h4>{profiles.education}</h4>
                 {profiles.speciality.map((doctor) => {
                   return (
@@ -193,6 +199,7 @@ const DoctorProfile = (props) => {
                 <p>
                   <br />
                 </p>
+
                 <div class="tab-content tab-content-info">
                   <div id="tab1" class="tab-pane fade active in">
                     <div class="info title">

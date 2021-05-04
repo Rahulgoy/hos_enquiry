@@ -6,20 +6,17 @@ from multiselectfield import MultiSelectField
 # Create your models here.
 speciality_choices = (
     ('Cardiologist', 'Cardiologist'),
-    ('Audiologist', 'Audiologist'),
+    ('Skin Specialist', 'Skin Specialist'),
     ('Dentist', 'Dentist'),
     ('ENT', 'ENT'),
     ('Gynaecologist', 'Gynaecologist'),
-    ('Orthopaedic', 'Orthopaedic'),
     ('Paediatrician', 'Paediatrician'),
-    ('Psychiatrists', 'Psychiatrists'),
-    ('Veterinarian', 'Veterinarian'),
+    ('General physician', 'General physician'),
     ('Radiologist', 'Radiologist'),
-    ('Pulmonologist', 'Pulmonologist'),
-    ('Endocrinologist', 'Endocrinologist'),
+    ('Ophthalmalogist', 'Ophthalmalogist'),
     ('Oncologist', 'Oncologist'),
     ('Neurologist', 'Neurologist'),
-    ('Cardiothoracic', 'Cardiothoracic'),
+    ('Orthopadics', 'Orthopadics'),
 
 )
 rate = (
