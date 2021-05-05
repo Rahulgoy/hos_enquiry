@@ -78,8 +78,8 @@ const EditDoctorProfile = ({ pid }) => {
   const handleclose = () => {
     setOpen(false);
   };
-  console.log(details);
-  console.log(speciality);
+  // console.log(details);
+  // console.log(speciality);
   return (
     <>
       <Tooltip title="Edit details" placement="top">

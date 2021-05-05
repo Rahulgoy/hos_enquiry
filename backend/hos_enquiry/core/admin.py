@@ -11,7 +11,7 @@ class DoctorAdmin(admin.ModelAdmin):
 
 @admin.register(Schedule)
 class ScheduleAdmin(admin.ModelAdmin):
-    list_display = ['doctor', 'day', 'open', 'close']
+    list_display = ['id', 'doctor', 'day', 'open', 'close']
 
 
 """ @admin.register(Specialities)

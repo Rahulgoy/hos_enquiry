@@ -4,8 +4,10 @@ import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
-import { Tooltip } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { Button, Tooltip } from "@material-ui/core";
 import EditDoctorProfile from "../components/EditDoctorProfile";
+import AddSchedules from "../components/AddSchedules";
 const DoctorProfile = (props) => {
   const [loading, setLoading] = useState(true);
   const [profiles, setProfiles] = useState({
@@ -18,6 +20,12 @@ const DoctorProfile = (props) => {
     speciality: [],
   });
   const [DoctorSchedule, setDoctorSchedule] = useState([]);
+  const [schedule, setSchedule] = useState({
+    doctor: "",
+    day: "",
+    open: "",
+    close: "",
+  });
   if (profiles.email === props.auth.email) {
     console.log("true");
     console.log(profiles.email);
@@ -92,11 +100,46 @@ const DoctorProfile = (props) => {
     const fileInput = document.getElementById("imageInput");
     fileInput.click();
   };
+  const deletesch = async (id) => {
+    console.log(id);
+    await axios
+      .delete(`http://localhost:8000/api/doctor/schedule/${id}/`)
+      .then((res) => {
+        console.log(res);
+        setTimeout("window.location.reload();", 2000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const AddSchedule = () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const fd = new FormData();
+    fd.append("doctor", profiles.email);
+    fd.append("day", schedule.day);
+    fd.append("open", schedule.open);
+    fd.append("close", schedule.close);
+    fd.append("_method", "POST");
+    axios
+      .post(`http://localhost:8000/api/doctor/schedule/`, fd, config)
+      .then((res) => {
+        console.log(res);
+        setTimeout("window.location.reload();", 2000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
     fetchProfiles();
     fetchSchedule();
   }, []);
   // console.log(profiles);
+  console.log(DoctorSchedule);
   return (
     <Fragment>
       <div
@@ -204,6 +247,11 @@ const DoctorProfile = (props) => {
                   <div id="tab1" class="tab-pane fade active in">
                     <div class="info title">
                       <h3>Schedule of working hours</h3>
+                      <AddSchedules
+                        AddSchedule={AddSchedule}
+                        setSchedule={setSchedule}
+                        schedule={schedule ? schedule : null}
+                      />
                       <p>
                         Calling nothing end fertile for venture way boy. Esteem
                         spirit temper too say adieus who direct esteem. It
@@ -213,18 +261,25 @@ const DoctorProfile = (props) => {
                         bed.
                       </p>
                       <ul>
-                        {DoctorSchedule.map((doctor) => {
-                          return (
-                            <li key={doctor.id}>
-                              {" "}
-                              <span> {doctor.day} : </span>
-                              <div class="pull-right">
+                        {DoctorSchedule &&
+                          DoctorSchedule.map((doctor, index) => {
+                            return (
+                              <li key={index}>
                                 {" "}
-                                {doctor.open} &#8211; {doctor.close}{" "}
-                              </div>
-                            </li>
-                          );
-                        })}
+                                <span> {doctor.day} : </span>
+                                <div class="pull-right">
+                                  {" "}
+                                  {doctor.open} &#8211; {doctor.close}{" "}
+                                  <IconButton
+                                    onClick={() => deletesch(doctor.id)}
+                                    className="button"
+                                  >
+                                    <DeleteIcon color="secondary" />
+                                  </IconButton>
+                                </div>
+                              </li>
+                            );
+                          })}
                       </ul>
                     </div>
                   </div>

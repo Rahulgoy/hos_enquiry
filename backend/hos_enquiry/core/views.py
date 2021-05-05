@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 class DoctorLC(ListCreateAPIView):
     queryset = Doctor.objects.all()
     serializer_class = DoctorSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
 
 
 class DoctorRUD(RetrieveUpdateDestroyAPIView):
@@ -33,7 +33,7 @@ class SpecialitiesRUD(RetrieveUpdateDestroyAPIView):
 class ScheduleLC(ListCreateAPIView):
     queryset = Schedule.objects.all()
     serializer_class = ScheduleSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [AllowAny]
 
 
 class ScheduleRUD(RetrieveUpdateDestroyAPIView):
