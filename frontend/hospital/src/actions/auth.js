@@ -73,3 +73,5 @@ export const logout = () => (dispatch) => {
   dispatch(setAlert("Logout Successful", "success"));
   dispatch({ type: LOGOUT });
 };
+/// fetch that doctor matching with current logged in users email address
+// then use that in navbar to link to it's profile page

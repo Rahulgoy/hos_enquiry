@@ -196,18 +196,23 @@ const DoctorProfile = (props) => {
                   </ul>
                 </div>
               </div>
-              <input
-                type="file"
-                id="imageInput"
-                display="hidden"
-                style={{ display: "hidden" }}
-                onChange={handleImageChange}
-              />
-              <Tooltip title="Edit Profile Picture" placement="top">
-                <IconButton onClick={handleEditPicture} className="button">
-                  <EditIcon color="primary" />
-                </IconButton>
-              </Tooltip>
+              {props.auth.isAuthenticated &&
+              props.auth.email === profiles.email ? (
+                <>
+                  <input
+                    type="file"
+                    id="imageInput"
+                    display="hidden"
+                    style={{ display: "hidden" }}
+                    onChange={handleImageChange}
+                  />
+                  <Tooltip title="Edit Profile Picture" placement="top">
+                    <IconButton onClick={handleEditPicture} className="button">
+                      <EditIcon color="primary" />
+                    </IconButton>
+                  </Tooltip>
+                </>
+              ) : null}
             </div>
             <div class="col-md-8">
               <div class="info">

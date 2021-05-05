@@ -13,9 +13,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         id="menu-item-408"
         className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
-        <Link title="Contact" to="/profile">
-          Profile
-        </Link>
+        <Link to={{ pathname: `/profile/${profile}` }}>Profile</Link>
       </li>
       <li
         id="menu-item-408"
@@ -34,7 +32,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         id="menu-item-408"
         className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
-        <Link title="Contact" to="/login">
+        <Link title="LogIn" to="/login">
           LogIn
         </Link>
       </li>
@@ -42,7 +40,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         id="menu-item-408"
         className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
-        <Link title="Contact" to="/signup">
+        <Link title="SignUp" to="/signup">
           SignUp
         </Link>
       </li>
