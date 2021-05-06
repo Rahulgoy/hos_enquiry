@@ -4,6 +4,7 @@ import { logout } from "../actions/auth";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Alert from "./Alert";
+import { FaBars, FaSearch } from "react-icons/fa";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   var retrievedObject = localStorage.getItem("token");
@@ -81,49 +82,15 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <header id="home">
         <nav className="navbar navbar-default attr-border navbar-sticky bootsnav">
           <div className="container">
-            <div className="row">
-              <div className="top-search">
-                <div className="input-group">
-                  <form action="https://sttheme.com/demosd/medihub/">
-                    <input
-                      type="text"
-                      name="s"
-                      id="s"
-                      className="form-control"
-                      placeholder="Search"
-                    />
-                    <button type="submit">
-                      <i className="fas fa-search"></i>
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="container">
-            <div className="attr-nav">
-              <ul>
-                <li className="search">
-                  <a href="#">
-                    <i className="fa fa-search"></i>
-                  </a>
-                </li>
-                <li className="side-menu">
-                  <a href="#">
-                    <i className="fa fa-bars"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
             <div className="navbar-header">
               <button
                 type="button"
-                className="navbar-toggle"
-                data-toggle="collapse"
+                className="navbar-toggle collapsed"
+                aria-expanded="false"
                 data-target="#navbar-menu"
+                data-toggle="collapse"
               >
-                <i className="fa fa-bars"></i>
+                <FaBars />
               </button>
               <Link className="navbar-brand" to="/">
                 <img

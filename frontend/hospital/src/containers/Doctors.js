@@ -57,16 +57,22 @@ const Doctors = ({ auth }) => {
   }
   return (
     <Fragment>
+      <Search
+        setSearch={setSearch}
+        fetchfilteredDoctors={fetchfilteredDoctors}
+      />
       <div
         id="doctors"
         className="doctor-area bg-gray default-padding bottom-less"
       >
-        <Search
-          setSearch={setSearch}
-          fetchfilteredDoctors={fetchfilteredDoctors}
-        />
         <div className="container">
-          <DoctorsCard doctors={search === "" ? doctors : filteredDoctors} />
+          <div className="row">
+            <div className="doctor-items text-center">
+              <DoctorsCard
+                doctors={search === "" ? doctors : filteredDoctors}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </Fragment>

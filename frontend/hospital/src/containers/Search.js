@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { FaPaperPlane } from "react-icons/fa";
 const Search = ({ fetchfilteredDoctors }) => {
   const [search, setSearch] = useState("");
   const handlechange = (e) => {
@@ -56,7 +56,7 @@ const Search = ({ fetchfilteredDoctors }) => {
                         />
                       </span>
                       <button type="submit">
-                        <i class="fa fa-paper-plane"></i>
+                        <FaPaperPlane />
                       </button>
                     </div>
                   </div>
