@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer>
-      <div class="container">
+      {/* <div class="container">
         <div class="row">
           <div class="f-items default-padding">
             <div class="col-md-4 item">
@@ -131,7 +131,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div class="footer-bottom bg-dark text-light">
         <div class="container">

@@ -37,17 +37,18 @@ const AddSchedules = ({ schedule, AddSchedule, setSchedule }) => {
   };
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <Tooltip title="Edit details" placement="top">
-        <IconButton
-          onClick={() => {
-            setOpen(true);
-          }}
-        >
-          <Button color="primary" variant="contained">
-            Add Schedule
-          </Button>
-        </IconButton>
-      </Tooltip>
+      <a
+        class="btn btn-theme border btn-xs"
+        href="#"
+        onClick={() => {
+          setOpen(true);
+        }}
+        style={{ margin: "10px", marginBottom: "20px" }}
+      >
+        Add Schedule
+      </a>
+      <br />
+
       <Dialog open={open} fullWidth maxWidth="sm">
         <DialogTitle>Edit your details</DialogTitle>
         <DialogContent>
@@ -109,3 +110,6 @@ const AddSchedules = ({ schedule, AddSchedule, setSchedule }) => {
 };
 
 export default AddSchedules;
+
+/*
+ */

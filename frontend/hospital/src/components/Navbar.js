@@ -13,7 +13,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         id="menu-item-408"
         className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
-        <Link to={{ pathname: `/profile/${profile}` }}>Profile</Link>
+        <Link to={{ pathname: `/profile/1` }}>Profile</Link>
       </li>
       <li
         id="menu-item-408"
@@ -58,21 +58,21 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                 <ul>
                   <li>
                     <i className="fas fa-map-marker-alt"></i>
-                    California, TX 70240
+                    Patiala, Punjab, India
                   </li>
                   <li>
                     <i className="fas fa-envelope-open"></i>
-                    Info@gmail.com
+                    healthconnect@gmail.com
                   </li>
                   <li>
                     <i className="fas fa-phone"></i>
-                    Call Us : +02151 7778 009
+                    Call Us : +91-151 7778 009
                   </li>
                 </ul>
               </div>
             </div>
             <div className="col-md-4 bar-btn text-right">
-              <a href="#">MAKE APPOINMENT</a>
+              <Link to="/doctors">SEARCH DOCTORS</Link>
             </div>
           </div>
         </div>
@@ -151,19 +151,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                   >
                     Home<span className="hidden-lg span-drop"></span>
                   </Link>
-                </li>
-                <li
-                  id="menu-item-371"
-                  className="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children nav-item menu-item-371 dropdown "
-                >
-                  <a
-                    title="Pages"
-                    href="#"
-                    className="dropdown-toggle smooth-menu"
-                    data-toggle="dropdown"
-                  >
-                    Pages<span className="hidden-lg span-drop"></span>
-                  </a>
                 </li>
 
                 <li

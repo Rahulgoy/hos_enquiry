@@ -12,59 +12,62 @@ const Search = ({ fetchfilteredDoctors }) => {
     fetchfilteredDoctors(search);
   };
   return (
-    <div
-      id="contact"
-      className="contact-area bg-gray text-center default-padding"
-    >
-      <div className="container">
-        <div className="row">
-          <div className="contact-items">
-            <div className="col-md-8 col-md-offset-2 contact-form">
-              <form
-                method="POST"
-                className="wpcf7-form init"
-                noValidate="noValidate"
-                data-status="init"
-                onSubmit={handleSubmit}
+    <>
+      <div
+        className="newsletter-area default-padding shadow dark bg-fixed text-center text-light"
+        style={{
+          backgroundImage: `url(https://sttheme.com/demosd/medihub/wp-content/uploads/2019/06/7-6.jpg)`,
+        }}
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Let’s Find A Doctor.</h2>
+              <div
+                role="form"
+                class="wpcf7"
+                id="wpcf7-f42-p6-o1"
+                lang="en-US"
+                dir="ltr"
               >
-                <div method="POST" className="contact-form">
-                  <div className="row">
-                    <div className="col-md-12">
-                      <div className="form-group">
-                        <span className="wpcf7-form-control-wrap email">
-                          <input
-                            type="email"
-                            name="search"
-                            size="40"
-                            className="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control"
-                            id="email"
-                            aria-required="true"
-                            aria-invalid="false"
-                            placeholder="Search by name, speciality"
-                            onChange={handlechange}
-                          />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-12">
-                    <div className="row">
-                      <input
-                        type="submit"
-                        name="submit"
-                        id="submit"
-                        className="form-submit submit"
-                        value="Log In"
-                      />
-                    </div>
-                  </div>
+                <div class="screen-reader-response">
+                  <p role="status" aria-live="polite" aria-atomic="true"></p>{" "}
+                  <ul></ul>
                 </div>
-              </form>
+                <form
+                  method="POST"
+                  className="wpcf7-form init"
+                  noValidate="noValidate"
+                  data-status="init"
+                  onSubmit={handleSubmit}
+                >
+                  <div>
+                    <div class="input-group stylish-input-group">
+                      <span class="wpcf7-form-control-wrap Email">
+                        <input
+                          type="email"
+                          name="Email"
+                          size="40"
+                          class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control"
+                          aria-required="true"
+                          aria-invalid="false"
+                          placeholder="Search by name, speciality"
+                          onChange={handlechange}
+                        />
+                      </span>
+                      <button type="submit">
+                        <i class="fa fa-paper-plane"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="wpcf7-response-output" aria-hidden="true"></div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -196,23 +196,28 @@ const DoctorProfile = (props) => {
                   </ul>
                 </div>
               </div>
-              {props.auth.isAuthenticated &&
-              props.auth.email === profiles.email ? (
-                <>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    display="hidden"
-                    style={{ display: "hidden" }}
-                    onChange={handleImageChange}
-                  />
-                  <Tooltip title="Edit Profile Picture" placement="top">
-                    <IconButton onClick={handleEditPicture} className="button">
-                      <EditIcon color="primary" />
-                    </IconButton>
-                  </Tooltip>
-                </>
-              ) : null}
+              {
+                /* props.auth.isAuthenticated &&
+              props.auth.email === profiles.email */ true ? (
+                  <>
+                    <input
+                      type="file"
+                      id="imageInput"
+                      display="hidden"
+                      style={{ display: "hidden" }}
+                      onChange={handleImageChange}
+                    />
+                    <Tooltip title="Edit Profile Picture" placement="top">
+                      <IconButton
+                        onClick={handleEditPicture}
+                        className="button"
+                      >
+                        <EditIcon color="primary" />
+                      </IconButton>
+                    </Tooltip>
+                  </>
+                ) : null
+              }
             </div>
             <div class="col-md-8">
               <div class="info">
@@ -230,12 +235,7 @@ const DoctorProfile = (props) => {
                 })}
                 <br></br>
                 <p>{profiles.description}</p>
-                <p>
-                  <a class="btn btn-theme border btn-md" href="#">
-                    Make Appoinment
-                  </a>
-                  <br />
-                </p>
+
                 <ul class="nav nav-pills">
                   <li class="active">
                     <a data-toggle="tab" href="#tab1" aria-expanded="true">
@@ -244,27 +244,18 @@ const DoctorProfile = (props) => {
                     </a>
                   </li>
                 </ul>
-                <p>
-                  <br />
-                </p>
 
                 <div class="tab-content tab-content-info">
                   <div id="tab1" class="tab-pane fade active in">
                     <div class="info title">
-                      <h3>Schedule of working hours</h3>
-                      <AddSchedules
-                        AddSchedule={AddSchedule}
-                        setSchedule={setSchedule}
-                        schedule={schedule ? schedule : null}
-                      />
-                      <p>
-                        Calling nothing end fertile for venture way boy. Esteem
-                        spirit temper too say adieus who direct esteem. It
-                        esteems luckily mr or picture placing drawing no.
-                        Apartments frequently or motionless on reasonable
-                        projecting expression. Way mrs end gave tall walk fact
-                        bed.
-                      </p>
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <h3>Schedule of working hours</h3>
+                        <AddSchedules
+                          AddSchedule={AddSchedule}
+                          setSchedule={setSchedule}
+                          schedule={schedule ? schedule : null}
+                        />
+                      </div>
                       <ul>
                         {DoctorSchedule &&
                           DoctorSchedule.map((doctor, index) => {
