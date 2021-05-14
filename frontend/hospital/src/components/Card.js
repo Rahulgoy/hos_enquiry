@@ -9,7 +9,7 @@ const Card = (props) => {
           <div className="thumb">
             <img src={props.image} alt="Thumb" style={{ height: "420px" }} />
             <div className="overlay">
-              <a href="https://sttheme.com/demosd/medihub/?doctor=jessica-jones-2">
+              <a href="#">
                 <i className="fa">
                   <FaPlus />
                 </i>

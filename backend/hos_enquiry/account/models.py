@@ -42,5 +42,8 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.name
 
+    def get_email(self):
+        return self.email
+
     def __str__(self):
         return self.email

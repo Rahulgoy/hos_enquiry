@@ -138,8 +138,10 @@ const DoctorProfile = (props) => {
     fetchProfiles();
     fetchSchedule();
   }, []);
-  // console.log(profiles);
-  console.log(DoctorSchedule);
+  //console.log(profiles);
+  //console.log(DoctorSchedule);
+  console.log(props);
+  // console.log(profiles.email);
   return (
     <Fragment>
       <div
@@ -196,28 +198,23 @@ const DoctorProfile = (props) => {
                   </ul>
                 </div>
               </div>
-              {
-                /* props.auth.isAuthenticated &&
-              props.auth.email === profiles.email */ true ? (
-                  <>
-                    <input
-                      type="file"
-                      id="imageInput"
-                      display="hidden"
-                      style={{ display: "hidden" }}
-                      onChange={handleImageChange}
-                    />
-                    <Tooltip title="Edit Profile Picture" placement="top">
-                      <IconButton
-                        onClick={handleEditPicture}
-                        className="button"
-                      >
-                        <EditIcon color="primary" />
-                      </IconButton>
-                    </Tooltip>
-                  </>
-                ) : null
-              }
+              {props.auth.isAuthenticated &&
+              props.auth.email === profiles.email ? (
+                <>
+                  <input
+                    type="file"
+                    id="imageInput"
+                    display="hidden"
+                    style={{ display: "hidden" }}
+                    onChange={handleImageChange}
+                  />
+                  <Tooltip title="Edit Profile Picture" placement="top">
+                    <IconButton onClick={handleEditPicture} className="button">
+                      <EditIcon color="primary" />
+                    </IconButton>
+                  </Tooltip>
+                </>
+              ) : null}
             </div>
             <div class="col-md-8">
               <div class="info">
@@ -227,6 +224,7 @@ const DoctorProfile = (props) => {
                 </div>
                 <h4>{profiles.education}</h4>
                 {profiles.speciality.map((doctor) => {
+                  //console.log(doctor);
                   return (
                     <pre style={{ display: "table-cell" }} key={doctor.id}>
                       {doctor}
