@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 // import Alert from "./Alert";
 import { FaBars, FaSearch } from "react-icons/fa";
 
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
-  var retrievedObject = localStorage.getItem("token");
+const Navbar = ({ isAuthenticated, logout }) => {
+  // var retrievedObject = localStorage.getItem("token");
   const authlinks = (
     <Fragment>
       <li
@@ -20,7 +20,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         id="menu-item-408"
         className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
-        <a title="Contact" href="#" onClick={logout}>
+        <a title="Contact" href="#!" onClick={logout}>
           Logout
         </a>
       </li>
@@ -145,13 +145,8 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
                     Contact
                   </a>
                 </li>
-                {!loading && (
-                  <Fragment>
-                    {isAuthenticated || retrievedObject
-                      ? authlinks
-                      : guestlinks}
-                  </Fragment>
-                )}
+
+                <Fragment>{isAuthenticated ? authlinks : guestlinks}</Fragment>
               </ul>
             </div>
           </div>
@@ -162,10 +157,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 };
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 export default connect(mapStateToProps, { logout })(Navbar);

@@ -14,7 +14,6 @@ const Layout = ({ checkAuthenticated, load_user, children }) => {
     <div>
       <Navbar />
       {children}
-      <Footer />
     </div>
   );
 };

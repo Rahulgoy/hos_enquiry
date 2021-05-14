@@ -42,6 +42,7 @@ function App() {
           />
           <Route component={NotFound} />
         </Switch>
+        <Footer />
       </Router>
     </Provider>
   );
