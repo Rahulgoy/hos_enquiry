@@ -12,16 +12,26 @@ import { Provider } from "react-redux";
 import Layout from "./hocs/Layout";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { ResetPassword } from "./containers/Authentication/ResetPassword";
+import ResetPasswordConfirm from "./containers/Authentication/ResetPasswordConfirm";
+import Activate from "./containers/Authentication/Activate";
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Navbar />
+        <Layout />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/reset-password" component={ResetPassword} />
+          <Route
+            exact
+            path="/password/reset/confirm/:uid/:token"
+            component={ResetPasswordConfirm}
+          />
+          <Route exact path="/activate/:uid/:token" component={Activate} />
           <Route exact path="/doctors" component={Doctors} />
           <Route
             exact
@@ -32,7 +42,6 @@ function App() {
           />
           <Route component={NotFound} />
         </Switch>
-        <Footer />
       </Router>
     </Provider>
   );

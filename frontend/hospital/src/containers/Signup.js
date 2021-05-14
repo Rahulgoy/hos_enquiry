@@ -2,11 +2,11 @@ import React, { useState, Fragment } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
-import { setAlert } from "../actions/alerts";
+// import { setAlert } from "../actions/alerts";
 import PropTypes from "prop-types";
 import { signup } from "../actions/auth";
 
-const Signup = ({ setAlert, signup, isAuthenticated }) => {
+const Signup = ({ signup, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,7 +26,7 @@ const Signup = ({ setAlert, signup, isAuthenticated }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (password !== password2) setAlert("Passwords do not match!", "error");
+    if (password !== password2) console.log("Passwords do not match!", "error");
     else {
       signup({ name, email, password, password2 });
       setSignre(true);
@@ -197,11 +197,10 @@ const Signup = ({ setAlert, signup, isAuthenticated }) => {
 Signup.propTypes = {
   signup: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  setAlert: PropTypes.func.isRequired,
 };
 
 const mapStateTpProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateTpProps, { setAlert, signup })(Signup);
+export default connect(mapStateTpProps, { signup })(Signup);

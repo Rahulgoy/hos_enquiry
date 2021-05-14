@@ -143,6 +143,10 @@ const Login = ({ login, isAuthenticated }) => {
                   <p>
                     Don't have an account? <Link to="/signup"> Sign Up</Link>
                   </p>
+                  <p>
+                    Forgot your password?{" "}
+                    <Link to="/reset-password">Reset Password</Link>
+                  </p>
                 </div>
               </div>
             </div>

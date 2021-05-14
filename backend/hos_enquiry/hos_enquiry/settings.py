@@ -32,9 +32,11 @@ INSTALLED_APPS = [
     'core',
     'account',
     'multiselectfield',
+    'social_django',
 ]
 
 MIDDLEWARE = [
+    'social_django.middleware.SocialAuthExceptionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -149,7 +151,9 @@ EMAIL_USE_TLS = True
 
 
 REST_FRAMEWORK = {
-
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated'
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
@@ -157,8 +161,8 @@ REST_FRAMEWORK = {
 
 
 AUTHENTICATION_BACKENDS = (
-    """ 'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2', """
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend'
 )
 

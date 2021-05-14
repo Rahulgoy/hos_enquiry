@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { logout } from "../actions/auth";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Alert from "./Alert";
+// import Alert from "./Alert";
 import { FaBars, FaSearch } from "react-icons/fa";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
