@@ -11,6 +11,7 @@ import AddSchedules from "../components/AddSchedules";
 const DoctorProfile = (props) => {
   const [loading, setLoading] = useState(true);
   const [profiles, setProfiles] = useState({
+    id: "",
     name: "",
     email: "",
     image: null,
@@ -26,11 +27,6 @@ const DoctorProfile = (props) => {
     open: "",
     close: "",
   });
-  if (profiles.email === props.auth.email) {
-    console.log("true");
-    console.log(profiles.email);
-    console.log(props.auth.email);
-  }
 
   const fetchProfiles = async () => {
     setLoading(true);
@@ -38,6 +34,7 @@ const DoctorProfile = (props) => {
       .get(`http://localhost:8000/api/doctor/profile/${props.pid}/`)
       .then((response) => {
         setProfiles({
+          id: response.data.id,
           name: response.data.name,
           email: response.data.email,
           image: response.data.image,
@@ -138,10 +135,12 @@ const DoctorProfile = (props) => {
     fetchProfiles();
     fetchSchedule();
   }, []);
-  //console.log(profiles);
+  // console.log(profiles);
   //console.log(DoctorSchedule);
-  console.log(props);
-  // console.log(profiles.email);
+  // console.log(props);
+  // console.log(props.auth.user.id);
+  // console.log(profiles.id);
+
   return (
     <Fragment>
       <div
@@ -199,7 +198,8 @@ const DoctorProfile = (props) => {
                 </div>
               </div>
               {props.auth.isAuthenticated &&
-              props.auth.email === profiles.email ? (
+              props.auth.user.id &&
+              props.auth.user.id === profiles.id ? (
                 <>
                   <input
                     type="file"
@@ -220,7 +220,11 @@ const DoctorProfile = (props) => {
               <div class="info">
                 <div class="edit" style={{ display: "flex" }}>
                   <h2>{profiles.name}</h2>
-                  <EditDoctorProfile pid={props.pid} />
+                  {props.auth.isAuthenticated &&
+                  props.auth.user.id &&
+                  props.auth.user.id === profiles.id ? (
+                    <EditDoctorProfile pid={props.pid} />
+                  ) : null}
                 </div>
                 <h4>{profiles.education}</h4>
                 {profiles.speciality.map((doctor) => {
@@ -248,11 +252,15 @@ const DoctorProfile = (props) => {
                     <div class="info title">
                       <div style={{ display: "flex", alignItems: "center" }}>
                         <h3>Schedule of working hours</h3>
-                        <AddSchedules
-                          AddSchedule={AddSchedule}
-                          setSchedule={setSchedule}
-                          schedule={schedule ? schedule : null}
-                        />
+                        {props.auth.isAuthenticated &&
+                        props.auth.user.id &&
+                        props.auth.user.id === profiles.id ? (
+                          <AddSchedules
+                            AddSchedule={AddSchedule}
+                            setSchedule={setSchedule}
+                            schedule={schedule ? schedule : null}
+                          />
+                        ) : null}
                       </div>
                       <ul>
                         {DoctorSchedule &&

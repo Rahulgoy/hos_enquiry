@@ -26,6 +26,7 @@ export const load_user = () => async (dispatch) => {
     const config = {
       headers: {
         "Content-Type": "application/json",
+        "X-CSRFToken": "csrftoken",
         Authorization: `JWT ${localStorage.getItem("access")}`,
         Accept: "application/json",
       },
@@ -137,6 +138,7 @@ export const checkAuthenticated = () => async (dispatch) => {
   if (localStorage.getItem("access")) {
     const config = {
       headers: {
+        "X-CSRFToken": "csrftoken",
         "Content-Type": "application/json",
         Accept: "application/json",
       },
@@ -175,6 +177,7 @@ export const checkAuthenticated = () => async (dispatch) => {
 export const login = (email, password) => async (dispatch) => {
   const config = {
     headers: {
+      "X-CSRFToken": "csrftoken",
       "Content-Type": "application/json",
     },
   };
@@ -205,6 +208,7 @@ export const signup =
   (first_name, last_name, email, password, re_password) => async (dispatch) => {
     const config = {
       headers: {
+        "X-CSRFToken": "csrftoken",
         "Content-Type": "application/json",
       },
     };
@@ -238,6 +242,7 @@ export const signup =
 export const verify = (uid, token) => async (dispatch) => {
   const config = {
     headers: {
+      "X-CSRFToken": "csrftoken",
       "Content-Type": "application/json",
     },
   };
@@ -264,6 +269,7 @@ export const verify = (uid, token) => async (dispatch) => {
 export const reset_password = (email) => async (dispatch) => {
   const config = {
     headers: {
+      "X-CSRFToken": "csrftoken",
       "Content-Type": "application/json",
     },
   };
@@ -291,6 +297,7 @@ export const reset_password_confirm =
   (uid, token, new_password, re_new_password) => async (dispatch) => {
     const config = {
       headers: {
+        "X-CSRFToken": "csrftoken",
         "Content-Type": "application/json",
       },
     };

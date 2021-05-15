@@ -6,15 +6,23 @@ import PropTypes from "prop-types";
 // import Alert from "./Alert";
 import { FaBars, FaSearch } from "react-icons/fa";
 
-const Navbar = ({ isAuthenticated, logout }) => {
+const Navbar = ({ isAuthenticated, logout, auth }) => {
   // var retrievedObject = localStorage.getItem("token");
+  // console.log(auth.user.id);
+
+  let prof = "#";
+  if (auth.user) {
+    prof = `/profile/${auth.user.id}/`;
+  } else {
+    prof = `/doctors/`;
+  }
   const authlinks = (
     <Fragment>
       <li
         id="menu-item-408"
         className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
-        <Link to={{ pathname: `/profile/1` }}>Profile</Link>
+        <Link to={{ pathname: prof }}>Profile</Link>
       </li>
       <li
         id="menu-item-408"
@@ -146,7 +154,9 @@ const Navbar = ({ isAuthenticated, logout }) => {
                   </a>
                 </li>
 
-                <Fragment>{isAuthenticated ? authlinks : guestlinks}</Fragment>
+                <Fragment>
+                  {isAuthenticated && auth.user ? authlinks : guestlinks}
+                </Fragment>
               </ul>
             </div>
           </div>
@@ -161,5 +171,7 @@ Navbar.propTypes = {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+
+  auth: state.auth,
 });
 export default connect(mapStateToProps, { logout })(Navbar);

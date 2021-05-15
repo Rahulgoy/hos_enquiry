@@ -16,21 +16,20 @@ const Doctors = ({ auth }) => {
   const fetchDoctors = () => {
     setLoading(true);
 
-    axios
-      .get(url)
-      .then((response) => {
-        //console.log(response.data.results);
-        setDoctors(response.data.results);
-      })
-      .catch((error) => {
-        console.log(error);
+    try {
+      axios.get(url).then((response) => {
+        // console.log(response.data);
+        setDoctors(response.data);
       });
+    } catch (error) {
+      console.log(error);
+    }
   };
   const fetchfilteredDoctors = (input) => {
     if (input) {
       setSearch(input);
 
-      //console.log(response.data.results);
+      //console.log(response.data);
 
       const special = doctors.filter((doctor) => {
         return Object.values(doctor)
@@ -48,7 +47,7 @@ const Doctors = ({ auth }) => {
   }, []);
   console.log(filteredDoctors);
   console.log(doctors);
-  if (doctors.length === 0) {
+  if (doctors && doctors.length === 0) {
     return (
       <div className="container">
         <h1>No Doctors Available</h1>
