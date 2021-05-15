@@ -54,13 +54,13 @@ const EditDoctorProfile = ({ pid }) => {
 
     const fd = new FormData();
     fd.append("name", details.name);
-    fd.append("eduaction", details.education);
+    fd.append("education", details.education);
     fd.append("description", details.description);
     fd.append("speciality", details.speciality);
     fd.append("_method", "PATCH");
     try {
       const res = await axios.patch(
-        `http://localhost:8000/api/doctor/profile/${pid}/`,
+        `${process.env.REACT_APP_API_URL}/api/doctor/profile/${pid}/`,
         fd,
         config
       );
@@ -78,7 +78,7 @@ const EditDoctorProfile = ({ pid }) => {
   const handleclose = () => {
     setOpen(false);
   };
-  // console.log(details);
+  console.log(details);
   // console.log(speciality);
   return (
     <>
@@ -87,61 +87,65 @@ const EditDoctorProfile = ({ pid }) => {
           <EditIcon color="secondary" />
         </IconButton>
       </Tooltip>
-      <Dialog open={open} fullWidth maxWidth="sm">
-        <DialogTitle>Edit your details</DialogTitle>
-        <DialogContent>
-          <form>
-            <TextField
-              name="name"
-              type="text"
-              label="name"
-              placeholder="Name"
-              onChange={handleChange}
-              fullWidth
-            />
-            <TextField
-              name="education"
-              type="text"
-              label="education"
-              placeholder="Education"
-              onChange={handleChange}
-              fullWidth
-            />
-            <TextField
-              name="description"
-              type="text"
-              label="description"
-              placeholder="Description"
-              onChange={handleChange}
-              fullWidth
-            />
-            <Autocomplete
-              multiple
-              id="tags-standard"
-              name="speciality"
-              onChange={handlespeciality}
-              options={speciality_choices}
-              getOptionLabel={(option) => option.title}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  variant="standard"
-                  label="Specialities"
-                  placeholder=""
-                />
-              )}
-            />
-          </form>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleclose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleSubmit} color="primary">
-            Save
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <div>
+        <Dialog open={open} fullWidth maxWidth="sm">
+          <DialogTitle style={{ fontSize: "rem" }}>
+            Edit your details
+          </DialogTitle>
+          <DialogContent>
+            <form>
+              <TextField
+                name="name"
+                type="text"
+                label="Name"
+                placeholder="Name"
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                name="education"
+                type="text"
+                label="Education"
+                placeholder="Education"
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                name="description"
+                type="text"
+                label="Description"
+                placeholder="Description"
+                onChange={handleChange}
+                fullWidth
+              />
+              <Autocomplete
+                multiple
+                id="tags-standard"
+                name="speciality"
+                onChange={handlespeciality}
+                options={speciality_choices}
+                getOptionLabel={(option) => option.title}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    variant="standard"
+                    label="Specialities"
+                    placeholder=""
+                  />
+                )}
+              />
+            </form>
+          </DialogContent>
+          <DialogActions>
+            <Button variant="contained" onClick={handleclose} color="primary">
+              Cancel
+            </Button>
+            <Button variant="contained" onClick={handleSubmit} color="primary">
+              Save
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
     </>
   );
 };

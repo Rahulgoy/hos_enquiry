@@ -22,7 +22,7 @@ const DoctorProfile = (props) => {
   });
   const [DoctorSchedule, setDoctorSchedule] = useState([]);
   const [schedule, setSchedule] = useState({
-    doctor: "",
+    doctor: props.auth.user.id,
     day: "",
     open: "",
     close: "",
@@ -31,7 +31,7 @@ const DoctorProfile = (props) => {
   const fetchProfiles = async () => {
     setLoading(true);
     axios
-      .get(`http://localhost:8000/api/doctor/profile/${props.pid}/`)
+      .get(`${process.env.REACT_APP_API_URL}/api/doctor/profile/${props.pid}/`)
       .then((response) => {
         setProfiles({
           id: response.data.id,
@@ -51,9 +51,9 @@ const DoctorProfile = (props) => {
   const fetchSchedule = async () => {
     setLoading(true);
     axios
-      .get(`http://localhost:8000/api/doctor/schedule/`)
+      .get(`${process.env.REACT_APP_API_URL}/api/doctor/schedule/`)
       .then((response) => {
-        const Schedule = response.data.results;
+        const Schedule = response.data;
 
         const newSchedule = Schedule.filter((sche) => {
           return sche.doctor === parseInt(props.pid);
@@ -81,7 +81,7 @@ const DoctorProfile = (props) => {
     fd.append("_method", "PATCH");
     try {
       const res = await axios.patch(
-        `http://localhost:8000/api/doctor/profile/${props.pid}/`,
+        `${process.env.REACT_APP_API_URL}/api/doctor/profile/${props.pid}/`,
         fd,
         config
       );
@@ -100,7 +100,7 @@ const DoctorProfile = (props) => {
   const deletesch = async (id) => {
     console.log(id);
     await axios
-      .delete(`http://localhost:8000/api/doctor/schedule/${id}/`)
+      .delete(`${process.env.REACT_APP_API_URL}/api/doctor/schedule/${id}/`)
       .then((res) => {
         console.log(res);
         setTimeout("window.location.reload();", 2000);
@@ -116,13 +116,13 @@ const DoctorProfile = (props) => {
       },
     };
     const fd = new FormData();
-    fd.append("doctor", profiles.email);
+    fd.append("doctor", schedule.doctor);
     fd.append("day", schedule.day);
     fd.append("open", schedule.open);
     fd.append("close", schedule.close);
     fd.append("_method", "POST");
     axios
-      .post(`http://localhost:8000/api/doctor/schedule/`, fd, config)
+      .post(`${process.env.REACT_APP_API_URL}/api/doctor/schedule/`, fd, config)
       .then((res) => {
         console.log(res);
         setTimeout("window.location.reload();", 2000);
@@ -136,7 +136,7 @@ const DoctorProfile = (props) => {
     fetchSchedule();
   }, []);
   // console.log(profiles);
-  //console.log(DoctorSchedule);
+  // console.log(DoctorSchedule);
   // console.log(props);
   // console.log(props.auth.user.id);
   // console.log(profiles.id);
@@ -198,7 +198,7 @@ const DoctorProfile = (props) => {
                 </div>
               </div>
               {props.auth.isAuthenticated &&
-              props.auth.user.id &&
+              props.auth.user &&
               props.auth.user.id === profiles.id ? (
                 <>
                   <input
@@ -221,7 +221,7 @@ const DoctorProfile = (props) => {
                 <div class="edit" style={{ display: "flex" }}>
                   <h2>{profiles.name}</h2>
                   {props.auth.isAuthenticated &&
-                  props.auth.user.id &&
+                  props.auth.user &&
                   props.auth.user.id === profiles.id ? (
                     <EditDoctorProfile pid={props.pid} />
                   ) : null}

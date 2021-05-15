@@ -22,7 +22,7 @@ const Navbar = ({ isAuthenticated, logout, auth }) => {
         id="menu-item-408"
         className="menu-item menu-item-type-post_type menu-item-object-page nav-item menu-item-408"
       >
-        <Link to={{ pathname: prof }}>Profile</Link>
+        <Link to={prof}>Profile</Link>
       </li>
       <li
         id="menu-item-408"

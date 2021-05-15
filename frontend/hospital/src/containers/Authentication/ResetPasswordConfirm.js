@@ -28,7 +28,7 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
   };
 
   if (requestSent) {
-    return <Redirect to="/" />;
+    return <Redirect to="/login" />;
   }
 
   return (
@@ -63,12 +63,8 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
             <div className="contact-items">
               <div className="col-md-8 col-md-offset-2 contact-form">
                 <div className="site-heading text-center">
-                  <h2>Log In</h2>
-                  <p>
-                    Our next drew much you with rank. Tore many held age hold
-                    rose than our. She literature sentiments any contrasted. Set
-                    aware joy sense young now tears china shy.
-                  </p>
+                  <h2>Reset Password</h2>
+                  <p></p>
                 </div>
                 <div
                   role="form"

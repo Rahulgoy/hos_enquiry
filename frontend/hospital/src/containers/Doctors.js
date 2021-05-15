@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Search from "./Search";
 
-const url = "http://localhost:8000/api/doctor/profile/";
+const url = `${process.env.REACT_APP_API_URL}/api/doctor/profile/`;
 const Doctors = ({ auth }) => {
   const [loading, setLoading] = useState(true);
   const [doctors, setDoctors] = useState([]);

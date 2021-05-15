@@ -280,7 +280,7 @@ export const reset_password = (email) => async (dispatch) => {
       body,
       config
     );
-    console.log(res);
+    // console.log(res);
     dispatch({
       type: PASSWORD_RESET_SUCCESS,
     });
@@ -295,7 +295,6 @@ export const reset_password_confirm =
   (uid, token, new_password, re_new_password) => async (dispatch) => {
     const config = {
       headers: {
-        "X-CSRFToken": "csrftoken",
         "Content-Type": "application/json",
       },
     };
