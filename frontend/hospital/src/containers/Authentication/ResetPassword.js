@@ -58,7 +58,7 @@ const ResetPassword = ({ reset_password }) => {
             <div className="contact-items">
               <div className="col-md-8 col-md-offset-2 contact-form">
                 <div className="site-heading text-center">
-                  <h2>Log In</h2>
+                  <h2>Reset Password</h2>
                   <p>
                     Our next drew much you with rank. Tore many held age hold
                     rose than our. She literature sentiments any contrasted. Set
@@ -111,7 +111,7 @@ const ResetPassword = ({ reset_password }) => {
                             name="submit"
                             id="submit"
                             className="form-submit submit"
-                            value="Reset Password"
+                            value="Request Reset"
                           />
                         </div>
                       </div>
