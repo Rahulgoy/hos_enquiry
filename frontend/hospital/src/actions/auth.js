@@ -205,7 +205,7 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const signup =
-  (first_name, last_name, email, password, re_password) => async (dispatch) => {
+  (name, email, password, re_password) => async (dispatch) => {
     const config = {
       headers: {
         "X-CSRFToken": "csrftoken",
@@ -214,8 +214,7 @@ export const signup =
     };
 
     const body = JSON.stringify({
-      first_name,
-      last_name,
+      name,
       email,
       password,
       re_password,

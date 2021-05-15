@@ -5,34 +5,57 @@ import { connect } from "react-redux";
 // import { setAlert } from "../actions/alerts";
 import PropTypes from "prop-types";
 import { signup } from "../actions/auth";
+import axios from "axios";
 
 const Signup = ({ signup, isAuthenticated }) => {
+  const [accountCreated, setAccountCreated] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    password2: "",
+    re_password: "",
   });
-  const [signre, setSignre] = useState(false);
 
-  const { name, email, password, password2 } = formData;
+  const { name, email, password, re_password } = formData;
 
-  const onChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
   const onSubmit = (e) => {
     e.preventDefault();
 
-    if (password !== password2) console.log("Passwords do not match!", "error");
-    else {
-      signup({ name, email, password, password2 });
-      setSignre(true);
+    if (password === re_password) {
+      signup(name, email, password, re_password);
+      setAccountCreated(true);
     }
   };
-  if (signre) return <Redirect to="/" />;
+
+  const continueWithGoogle = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?redirect_uri=${process.env.REACT_APP_API_URL}/google`
+      );
+
+      window.location.replace(res.data.authorization_url);
+    } catch (err) {}
+  };
+
+  const continueWithFacebook = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/auth/o/facebook/?redirect_uri=${process.env.REACT_APP_API_URL}/facebook`
+      );
+
+      window.location.replace(res.data.authorization_url);
+    } catch (err) {}
+  };
+
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
+  if (accountCreated) {
+    return <Redirect to="/login" />;
+  }
 
   return (
     <Fragment>
@@ -155,7 +178,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                             <span className="wpcf7-form-control-wrap email">
                               <input
                                 type="password"
-                                name="password2"
+                                name="re_password"
                                 size="40"
                                 className="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control"
                                 id="password2"
@@ -182,6 +205,19 @@ const Signup = ({ signup, isAuthenticated }) => {
                       </div>
                     </div>
                   </form>
+                  <button
+                    className="btn btn-danger mt-3"
+                    onClick={continueWithGoogle}
+                  >
+                    Continue With Google
+                  </button>
+                  <br />
+                  <button
+                    className="btn btn-primary mt-3"
+                    onClick={continueWithFacebook}
+                  >
+                    Continue With Facebook
+                  </button>
                   <p>
                     Already have an account? <Link to="/login"> Log In</Link>
                   </p>
@@ -203,4 +239,8 @@ const mapStateTpProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateTpProps, { signup })(Signup);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { signup })(Signup);
