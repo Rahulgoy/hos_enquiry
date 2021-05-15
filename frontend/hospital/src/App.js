@@ -12,7 +12,7 @@ import { Provider } from "react-redux";
 import Layout from "./hocs/Layout";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { ResetPassword } from "./containers/Authentication/ResetPassword";
+import ResetPassword from "./containers/Authentication/ResetPassword";
 import ResetPasswordConfirm from "./containers/Authentication/ResetPasswordConfirm";
 import Activate from "./containers/Authentication/Activate";
 

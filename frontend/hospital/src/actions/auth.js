@@ -269,7 +269,6 @@ export const verify = (uid, token) => async (dispatch) => {
 export const reset_password = (email) => async (dispatch) => {
   const config = {
     headers: {
-      "X-CSRFToken": "csrftoken",
       "Content-Type": "application/json",
     },
   };
@@ -277,12 +276,12 @@ export const reset_password = (email) => async (dispatch) => {
   const body = JSON.stringify({ email });
 
   try {
-    await axios.post(
+    const res = await axios.post(
       `${process.env.REACT_APP_API_URL}/auth/users/reset_password/`,
       body,
       config
     );
-
+    console.log(res);
     dispatch({
       type: PASSWORD_RESET_SUCCESS,
     });
