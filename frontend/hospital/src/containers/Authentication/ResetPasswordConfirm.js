@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { Redirect } from "react-router-dom";
-
+import { Button } from "@material-ui/core";
 import { connect } from "react-redux";
 
 import { reset_password_confirm } from "../../actions/auth";
@@ -22,15 +22,16 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
 
     const uid = match.params.uid;
     const token = match.params.token;
-
-    reset_password_confirm(uid, token, new_password, re_new_password);
+    if (formData.new_password !== "") {
+      reset_password_confirm(uid, token, new_password, re_new_password);
+    }
     setRequestSent(true);
   };
 
   if (requestSent) {
     return <Redirect to="/login" />;
   }
-
+  console.log(formData);
   return (
     <Fragment>
       <div
@@ -64,7 +65,6 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
               <div className="col-md-8 col-md-offset-2 contact-form">
                 <div className="site-heading text-center">
                   <h2>Reset Password</h2>
-                  <p></p>
                 </div>
                 <div
                   role="form"
@@ -73,17 +73,11 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
                   lang="en-US"
                   dir="ltr"
                 >
-                  <div className="screen-reader-response">
-                    <p role="status" aria-live="polite" aria-atomic="true"></p>{" "}
-                    <ul></ul>
-                  </div>
                   <form
-                    action="/demosd/medihub/?page_id=282#wpcf7-f234-p282-o1"
-                    method="POST"
                     className="wpcf7-form init"
                     noValidate="noValidate"
                     data-status="init"
-                    onSubmit={(e) => onSubmit(e)}
+                    // onSubmit={(e) => onSubmit(e)}
                   >
                     <div method="POST" className="contact-form">
                       <div className="row">
@@ -93,9 +87,10 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
                               <input
                                 type="password"
                                 name="new_password"
+                                minLength="8"
                                 size="40"
                                 className="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control"
-                                id="password"
+                                id="new_password"
                                 aria-required="true"
                                 aria-invalid="false"
                                 placeholder="New Password*"
@@ -114,8 +109,9 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
                                 type="password"
                                 name="re_new_password"
                                 size="40"
+                                minLength="8"
                                 className="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email form-control"
-                                id="password"
+                                id="re_new_password"
                                 aria-required="true"
                                 aria-invalid="false"
                                 placeholder="Confirm New Password*"
@@ -129,12 +125,11 @@ const ResetPasswordConfirm = ({ match, reset_password_confirm }) => {
 
                       <div className="col-md-12">
                         <div className="row">
-                          <input
-                            type="submit"
-                            name="submit"
-                            id="submit"
+                          <Button
+                            disabled={formData.new_password === ""}
                             className="form-submit submit"
                             value="Reset Password"
+                            onClick={(e) => onSubmit(e)}
                           />
                         </div>
                       </div>

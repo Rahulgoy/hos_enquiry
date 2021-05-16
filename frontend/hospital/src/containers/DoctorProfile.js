@@ -22,7 +22,7 @@ const DoctorProfile = (props) => {
   });
   const [DoctorSchedule, setDoctorSchedule] = useState([]);
   const [schedule, setSchedule] = useState({
-    doctor: props.auth.user.id,
+    doctor: props.pid,
     day: "",
     open: "",
     close: "",

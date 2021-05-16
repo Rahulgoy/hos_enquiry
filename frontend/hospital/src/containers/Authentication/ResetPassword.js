@@ -59,11 +59,6 @@ const ResetPassword = ({ reset_password }) => {
               <div className="col-md-8 col-md-offset-2 contact-form">
                 <div className="site-heading text-center">
                   <h2>Reset Password</h2>
-                  <p>
-                    Our next drew much you with rank. Tore many held age hold
-                    rose than our. She literature sentiments any contrasted. Set
-                    aware joy sense young now tears china shy.
-                  </p>
                 </div>
                 <div
                   role="form"
@@ -72,13 +67,7 @@ const ResetPassword = ({ reset_password }) => {
                   lang="en-US"
                   dir="ltr"
                 >
-                  <div className="screen-reader-response">
-                    <p role="status" aria-live="polite" aria-atomic="true"></p>{" "}
-                    <ul></ul>
-                  </div>
                   <form
-                    action="/demosd/medihub/?page_id=282#wpcf7-f234-p282-o1"
-                    method="POST"
                     className="wpcf7-form init"
                     noValidate="noValidate"
                     data-status="init"

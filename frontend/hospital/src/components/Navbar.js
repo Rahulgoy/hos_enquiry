@@ -71,7 +71,7 @@ const Navbar = ({ isAuthenticated, logout, auth }) => {
                   </li>
                   <li>
                     <i className="fas fa-envelope-open"></i>
-                    healthconnect@gmail.com
+                    healthconnect27@gmail.com
                   </li>
                   <li>
                     <i className="fas fa-phone"></i>

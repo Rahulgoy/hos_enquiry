@@ -61,11 +61,6 @@ const Activate = ({ verify, match }) => {
                   lang="en-US"
                   dir="ltr"
                 >
-                  <div className="screen-reader-response">
-                    <p role="status" aria-live="polite" aria-atomic="true"></p>{" "}
-                    <ul></ul>
-                  </div>
-
                   <div className="col-md-12">
                     <div className="row">
                       <input
