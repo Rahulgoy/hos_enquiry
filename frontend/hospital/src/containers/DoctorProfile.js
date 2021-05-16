@@ -201,13 +201,14 @@ const DoctorProfile = (props) => {
               props.auth.user &&
               props.auth.user.id === profiles.id ? (
                 <>
-                  <input
-                    type="file"
-                    id="imageInput"
-                    display="hidden"
-                    style={{ display: "hidden" }}
-                    onChange={handleImageChange}
-                  />
+                  <div style={{ display: "hidden" }}>
+                    <input
+                      type="hidden"
+                      type="file"
+                      id="imageInput"
+                      onChange={handleImageChange}
+                    />
+                  </div>
                   <Tooltip title="Edit Profile Picture" placement="top">
                     <IconButton onClick={handleEditPicture} className="button">
                       <EditIcon color="primary" />

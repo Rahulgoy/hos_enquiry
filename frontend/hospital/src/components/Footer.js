@@ -138,7 +138,7 @@ const Footer = () => {
           <div class="row">
             <div class="col-md-6">
               <p>
-                &copy; Copyright 2019. All Rights Reserved by{" "}
+                &copy; Copyright 2021. All Rights Reserved by{" "}
                 <a href="#">Health Connect</a>
               </p>
             </div>
