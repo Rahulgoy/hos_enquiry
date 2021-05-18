@@ -4,39 +4,40 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  IconButton,
   TextField,
-  Tooltip,
 } from "@material-ui/core";
-import "date-fns";
-import DateFnsUtils from "@date-io/date-fns";
+import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
+import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
+import TimePicker from "@material-ui/lab/TimePicker";
 import React, { useState } from "react";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-} from "@material-ui/pickers";
 
 ////Main Function
 //
 //
 
 const AddSchedules = ({ schedule, AddSchedule, setSchedule }) => {
-  console.log(schedule);
+  // console.log(schedule);
   const [open, setOpen] = useState(false);
+  const [start, setStart] = useState(new Date());
+  const [end, setEnd] = useState(new Date());
   const handleChange = (e) => {
     if (schedule) setSchedule({ ...schedule, [e.target.name]: e.target.value });
   };
-  const handleOpen = (date, value) => {
-    if (schedule) setSchedule({ ...schedule, open: value });
-  };
-  const handleClose = (date, value) => {
-    if (schedule) setSchedule({ ...schedule, close: value });
+
+  const HandleSchedule = () => {
+    var str1 = String(start);
+    var res1 = str1.substring(16, 24);
+    var str = String(end);
+    var res = str.substring(16, 24);
+    if (schedule) setSchedule({ ...schedule, open: res1, close: res });
+    AddSchedule();
   };
   const handleDialogclose = () => {
     setOpen(false);
   };
+
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
       <a
         class="btn btn-theme border btn-xs"
         href="#"
@@ -62,32 +63,36 @@ const AddSchedules = ({ schedule, AddSchedule, setSchedule }) => {
               fullWidth
             />
 
-            <KeyboardTimePicker
-              margin="normal"
-              //   name="open"
-              id="time-picker"
-              label="Shift Start Time"
+            <TimePicker
               ampm={false}
-              onChange={handleOpen}
-              defaultValue="00:00"
-              value={schedule.open}
-              KeyboardButtonProps={{
-                "aria-label": "change time",
+              openTo="hours"
+              views={["hours", "minutes", "seconds"]}
+              inputFormat="HH:mm:ss"
+              mask="__:__:__"
+              label="Shift Start Time"
+              value={start}
+              onChange={(newValue) => {
+                setStart(newValue);
               }}
+              renderInput={(params) => (
+                <TextField {...params} margin="normal" />
+              )}
             />
 
-            <KeyboardTimePicker
-              margin="normal"
-              name="close"
-              id="time-picker"
-              label="Shift End Time"
+            <TimePicker
               ampm={false}
-              defaultValue="00:00"
-              value={schedule.close}
-              onChange={handleClose}
-              KeyboardButtonProps={{
-                "aria-label": "change time",
+              openTo="hours"
+              views={["hours", "minutes", "seconds"]}
+              inputFormat="HH:mm:ss"
+              mask="__:__:__"
+              label="Shift End Time"
+              value={end}
+              onChange={(newValue) => {
+                setEnd(newValue);
               }}
+              renderInput={(params) => (
+                <TextField {...params} margin="normal" />
+              )}
             />
           </form>
         </DialogContent>
@@ -100,12 +105,12 @@ const AddSchedules = ({ schedule, AddSchedule, setSchedule }) => {
           >
             Cancel
           </Button>
-          <Button onClick={AddSchedule} color="primary">
+          <Button onClick={HandleSchedule} color="primary">
             Save
           </Button>
         </DialogActions>
       </Dialog>
-    </MuiPickersUtilsProvider>
+    </LocalizationProvider>
   );
 };
 
