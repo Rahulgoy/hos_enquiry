@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import ResetPassword from "./containers/Authentication/ResetPassword";
 import ResetPasswordConfirm from "./containers/Authentication/ResetPasswordConfirm";
 import Activate from "./containers/Authentication/Activate";
+import Images from "./containers/Images";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           />
           <Route exact path="/activate/:uid/:token" component={Activate} />
           <Route exact path="/doctors" component={Doctors} />
+          <Route exact path="/images" component={Images} />
           <Route
             exact
             path="/profile/:pid"

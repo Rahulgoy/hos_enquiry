@@ -57,9 +57,7 @@ const Card = (props) => {
               );
             })}
 
-            <div className="appoinment-btn">
-              <a href="#">Make Appoinment</a>
-            </div>
+            <div className="appoinment-btn"></div>
           </div>
         </div>
       </div>

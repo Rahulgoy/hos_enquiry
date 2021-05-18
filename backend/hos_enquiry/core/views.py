@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Doctor, Schedule
-from .serializers import DoctorSerializer, ScheduleSerializer
+from .models import Doctor, Schedule, SearchImages
+from .serializers import DoctorSerializer, ScheduleSerializer, SearchImageSerializer
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny
 
@@ -39,4 +39,16 @@ class ScheduleLC(ListCreateAPIView):
 class ScheduleRUD(RetrieveUpdateDestroyAPIView):
     queryset = Schedule.objects.all()
     serializer_class = ScheduleSerializer
+    permission_classes = [AllowAny]
+
+
+class SearchImageLC(ListCreateAPIView):
+    queryset = SearchImages.objects.all()
+    serializer_class = SearchImageSerializer
+    permission_classes = [AllowAny]
+
+
+class SearchImageRUD(RetrieveUpdateDestroyAPIView):
+    queryset = SearchImages.objects.all()
+    serializer_class = SearchImageSerializer
     permission_classes = [AllowAny]

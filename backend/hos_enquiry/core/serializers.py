@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Doctor, Schedule
+from .models import Doctor, Schedule, SearchImages
 
 
 class DoctorSerializer(serializers.ModelSerializer):
@@ -13,6 +13,12 @@ class ScheduleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Schedule
         fields = ['id', 'doctor', 'day', 'open', 'close']
+
+
+class SearchImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SearchImages
+        fields = ['id', 'name', 'img']
 
 
 """ 

@@ -4,9 +4,10 @@ import axios from "axios";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Search from "./Search";
+import { Link } from "@material-ui/core";
 
 const url = `${process.env.REACT_APP_API_URL}/api/doctor/profile/`;
-const Doctors = ({ auth }) => {
+const Doctors = ({ auth, user }) => {
   const [loading, setLoading] = useState(true);
   const [doctors, setDoctors] = useState([]);
   const [filteredDoctors, setfilteredDoctors] = useState([]);
@@ -26,9 +27,10 @@ const Doctors = ({ auth }) => {
     }
   };
   const fetchfilteredDoctors = (input) => {
+    console.log("Fetch:", input.toLowerCase());
     if (input) {
       setSearch(input);
-
+      input = String(input);
       //console.log(response.data);
 
       const special = doctors.filter((doctor) => {
@@ -38,16 +40,25 @@ const Doctors = ({ auth }) => {
           .includes(input.toLowerCase());
       });
 
-      //console.log(special);
+      console.log(special);
       setfilteredDoctors(special);
     }
   };
   useEffect(() => {
+    console.log("Work1");
     fetchDoctors();
+    if (doctors && search !== null && search !== "")
+      fetchfilteredDoctors(search);
+    if (localStorage.getItem("ImageKey") !== null) {
+      setSearch(String(localStorage.getItem("ImageKey")));
+      localStorage.removeItem("ImageKey");
+    }
   }, []);
+
+  console.log(search);
   console.log(filteredDoctors);
   console.log(doctors);
-  if (doctors && doctors.length === 0) {
+  if (!doctors || doctors.length === 0) {
     return (
       <div className="container">
         <h1>No Doctors Available</h1>
@@ -60,6 +71,7 @@ const Doctors = ({ auth }) => {
         setSearch={setSearch}
         fetchfilteredDoctors={fetchfilteredDoctors}
       />
+
       <div
         id="doctors"
         className="doctor-area bg-gray default-padding bottom-less"
@@ -68,7 +80,11 @@ const Doctors = ({ auth }) => {
           <div className="row">
             <div className="doctor-items text-center">
               <DoctorsCard
-                doctors={search === "" ? doctors : filteredDoctors}
+                doctors={
+                  search === "" || search === "null" || search === null
+                    ? doctors
+                    : filteredDoctors
+                }
               />
             </div>
           </div>
@@ -81,5 +97,6 @@ const Doctors = ({ auth }) => {
 const mapStateToProps = (state) => ({
   auth: state.auth,
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.user,
 });
 export default connect(mapStateToProps)(Doctors);

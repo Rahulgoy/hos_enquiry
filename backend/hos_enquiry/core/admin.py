@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Doctor, Schedule
+from .models import Doctor, Schedule, SearchImages
 # Register your models here.
 
 
@@ -12,6 +12,11 @@ class DoctorAdmin(admin.ModelAdmin):
 @admin.register(Schedule)
 class ScheduleAdmin(admin.ModelAdmin):
     list_display = ['id', 'doctor', 'day', 'open', 'close']
+
+
+@admin.register(SearchImages)
+class SearchImageAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name', 'img']
 
 
 """ @admin.register(Specialities)

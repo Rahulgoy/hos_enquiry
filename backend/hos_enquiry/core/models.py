@@ -73,3 +73,11 @@ class Schedule(models.Model):
     day = models.CharField(max_length=50, default='')
     open = models.TimeField()
     close = models.TimeField()
+
+
+class SearchImages(models.Model):
+    name = models.CharField(max_length=100, default="Image", blank=True)
+    img = models.ImageField(blank=True, default='default.jpg')
+
+    def __str__(self):
+        return self.name

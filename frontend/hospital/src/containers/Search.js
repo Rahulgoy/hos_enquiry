@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { FaPaperPlane } from "react-icons/fa";
 const Search = ({ fetchfilteredDoctors }) => {
@@ -62,6 +63,9 @@ const Search = ({ fetchfilteredDoctors }) => {
                   </div>
                   <div class="wpcf7-response-output" aria-hidden="true"></div>
                 </form>
+              </div>
+              <div className="col-md-4 bar-btn text-right">
+                <Link to="/images">SEARCH BY IMAGES</Link>
               </div>
             </div>
           </div>
