@@ -34,15 +34,10 @@ const EditDoctorProfile = ({ pid }) => {
     name: "",
     education: "",
     description: "",
-    speciality: [],
+    speciality: "",
   });
-  const [speciality, setSpeciality] = useState([]);
   const handleChange = (e) => {
     setDetails({ ...details, [e.target.name]: e.target.value });
-  };
-  const handlespeciality = (e) => {
-    console.log(e.target.value);
-    setSpeciality([e.target.value]);
   };
 
   const handleSubmit = async (e) => {
@@ -118,21 +113,13 @@ const EditDoctorProfile = ({ pid }) => {
                 onChange={handleChange}
                 fullWidth
               />
-              <Autocomplete
-                multiple
-                id="tags-standard"
+              <TextField
                 name="speciality"
-                onChange={handlespeciality}
-                options={speciality_choices}
-                getOptionLabel={(option) => option.title}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    variant="standard"
-                    label="Specialities"
-                    placeholder=""
-                  />
-                )}
+                type="text"
+                label="Specialities(like: Dentist, Orthopaedic)"
+                placeholder="Specialities"
+                onChange={handleChange}
+                fullWidth
               />
             </form>
           </DialogContent>

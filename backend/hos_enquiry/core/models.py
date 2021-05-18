@@ -37,8 +37,8 @@ class Doctor(models.Model):
     education = models.CharField(
         max_length=200, default="Education")
     description = models.TextField(default="Description of Doctor")
-    speciality = MultiSelectField(
-        choices=speciality_choices, max_length=100, blank=True)
+    speciality = models.TextField(
+        max_length=500, blank=True)
 
     def __str__(self):
         return self.name

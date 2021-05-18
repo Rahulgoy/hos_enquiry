@@ -27,7 +27,6 @@ const DoctorProfile = (props) => {
     open: "",
     close: "",
   });
-
   const fetchProfiles = async () => {
     setLoading(true);
     axios
@@ -41,7 +40,7 @@ const DoctorProfile = (props) => {
           rating: response.data.rating,
           education: response.data.education,
           description: response.data.description,
-          speciality: response.data.speciality,
+          speciality: response.data.speciality.split(", "),
         });
       })
       .catch((error) => {
@@ -133,6 +132,7 @@ const DoctorProfile = (props) => {
   };
   useEffect(() => {
     fetchProfiles();
+
     fetchSchedule();
   }, []);
   // console.log(profiles);

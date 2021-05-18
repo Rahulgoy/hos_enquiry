@@ -2,6 +2,8 @@ import React, { Fragment } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 const Card = (props) => {
+  const speciality = props.speciality.split(", ");
+
   return (
     <Fragment>
       <div className="col-md-4 equal-height" style={{ height: "521px" }}>
@@ -46,11 +48,11 @@ const Card = (props) => {
             </Link>
             <h5>{props.education}</h5>
 
-            {props.speciality.map((spec) => {
+            {speciality.map((spec) => {
               return (
                 <span>
                   {spec}
-                  {"  "}
+                  {"/  "}
                 </span>
               );
             })}
