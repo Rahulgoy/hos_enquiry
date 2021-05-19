@@ -1,13 +1,12 @@
 import { Link, Redirect } from "react-router-dom";
 import React from "react";
 import { connect } from "react-redux";
-import { setKeyword_filteredDoctors } from "../actions/user";
+import { fetch_filteredDoctors } from "../actions/user";
 import { Button } from "@material-ui/core";
-const ImagesCard = ({ image, setKeyword_filteredDoctors }) => {
+
+const ImagesCard = ({ image }) => {
   const handleClick = () => {
-    setKeyword_filteredDoctors(image.name);
-    // return <Redirect to="/doctors" />;
-    window.location.replace(`${process.env.REACT_APP_API_URL}/doctors/`);
+    fetch_filteredDoctors(image.key);
   };
   return (
     <>
@@ -16,10 +15,18 @@ const ImagesCard = ({ image, setKeyword_filteredDoctors }) => {
           <div className="thumb">
             <img src={image.img} alt="Thumb" style={{ height: "420px" }} />
           </div>
+
           <div className="info">
-            <Button variant="contained" color="secondary" onClick={handleClick}>
-              {image.name}
-            </Button>
+            <Link to={`/images/${image.key}/`}>
+              <Button
+                variant="contained"
+                size="large"
+                color="secondary"
+                onClick={handleClick}
+              >
+                {image.name}
+              </Button>
+            </Link>
             <div className="appoinment-btn"></div>
           </div>
         </div>
@@ -28,4 +35,4 @@ const ImagesCard = ({ image, setKeyword_filteredDoctors }) => {
   );
 };
 
-export default connect(null, { setKeyword_filteredDoctors })(ImagesCard);
+export default connect(null, { fetch_filteredDoctors })(ImagesCard);

@@ -8,7 +8,7 @@ const Images = () => {
   const fetchImages = () => {
     try {
       axios.get(url).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setSearchImages(response.data);
       });
     } catch (error) {

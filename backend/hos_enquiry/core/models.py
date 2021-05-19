@@ -77,6 +77,7 @@ class Schedule(models.Model):
 
 class SearchImages(models.Model):
     name = models.CharField(max_length=100, default="Image", blank=True)
+    key = models.CharField(max_length=100, blank=True)
     img = models.ImageField(blank=True, default='default.jpg')
 
     def __str__(self):

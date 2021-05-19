@@ -18,7 +18,7 @@ class ScheduleSerializer(serializers.ModelSerializer):
 class SearchImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = SearchImages
-        fields = ['id', 'name', 'img']
+        fields = ['id', 'name', 'key', 'img']
 
 
 """ 

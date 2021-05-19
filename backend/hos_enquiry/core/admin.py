@@ -16,7 +16,7 @@ class ScheduleAdmin(admin.ModelAdmin):
 
 @admin.register(SearchImages)
 class SearchImageAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'img']
+    list_display = ['id', 'name', 'key', 'img']
 
 
 """ @admin.register(Specialities)

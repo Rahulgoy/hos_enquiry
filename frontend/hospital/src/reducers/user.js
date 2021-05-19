@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   isfetched: null,
-  doctor: "",
+  doctor: [],
   searchKey: "",
 };
 
