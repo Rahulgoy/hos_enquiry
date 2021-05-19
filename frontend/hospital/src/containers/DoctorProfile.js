@@ -220,7 +220,7 @@ const DoctorProfile = (props) => {
             <div class="col-md-8">
               <div class="info">
                 <div class="edit" style={{ display: "flex" }}>
-                  <h2>{profiles.name}</h2>
+                  <h2>Dr .{profiles.name}</h2>
                   {props.auth.isAuthenticated &&
                   props.auth.user &&
                   props.auth.user.id === profiles.id ? (

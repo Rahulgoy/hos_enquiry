@@ -44,7 +44,7 @@ const Card = (props) => {
           </div>
           <div className="info">
             <Link to={{ pathname: `/profile/${props.id}` }}>
-              <h4>{props.name}</h4>
+              <h4>Dr. {props.name}</h4>
             </Link>
             <h5>{props.education}</h5>
 
