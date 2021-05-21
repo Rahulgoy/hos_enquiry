@@ -53,9 +53,6 @@ const Signup = ({ signup, isAuthenticated }) => {
   if (isAuthenticated) {
     return <Redirect to="/" />;
   }
-  if (accountCreated) {
-    return <Redirect to="/login" />;
-  }
 
   return (
     <Fragment>

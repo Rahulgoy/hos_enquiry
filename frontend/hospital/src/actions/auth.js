@@ -185,11 +185,15 @@ export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await axios.post(
-      `${process.env.REACT_APP_API_URL}/auth/jwt/create/`,
-      body,
-      config
-    );
+    const res = await axios
+      .post(`${process.env.REACT_APP_API_URL}/auth/jwt/create/`, body, config)
+      .catch((err) => {
+        console.log(err.response.data);
+        dispatch({
+          type: LOGIN_FAIL,
+          payload: err.response.data,
+        });
+      });
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -200,6 +204,7 @@ export const login = (email, password) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: LOGIN_FAIL,
+      payload: err,
     });
   }
 };
@@ -221,19 +226,25 @@ export const signup =
     });
 
     try {
-      const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/auth/users/`,
-        body,
-        config
-      );
+      const res = await axios
+        .post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config)
+        .catch((err) => {
+          console.log(err.response);
+          dispatch({
+            type: SIGNUP_FAIL,
+            payload: err.response.data,
+          });
+        });
 
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: res.data,
       });
     } catch (err) {
+      console.log(err);
       dispatch({
         type: SIGNUP_FAIL,
+        payload: err,
       });
     }
   };
@@ -275,11 +286,18 @@ export const reset_password = (email) => async (dispatch) => {
   const body = JSON.stringify({ email });
 
   try {
-    const res = await axios.post(
-      `${process.env.REACT_APP_API_URL}/auth/users/reset_password/`,
-      body,
-      config
-    );
+    const res = await axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/auth/users/reset_password/`,
+        body,
+        config
+      )
+      .catch((err) => {
+        console.log(err);
+        dispatch({
+          type: PASSWORD_RESET_FAIL,
+        });
+      });
     // console.log(res);
     dispatch({
       type: PASSWORD_RESET_SUCCESS,
@@ -302,19 +320,25 @@ export const reset_password_confirm =
     const body = JSON.stringify({ uid, token, new_password, re_new_password });
 
     try {
-      await axios.post(
-        `${process.env.REACT_APP_API_URL}/auth/users/reset_password_confirm/`,
-        body,
-        config
-      );
+      await axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/auth/users/reset_password_confirm/`,
+          body,
+          config
+        )
+        .catch((err) => {
+          console.log(err);
+        });
 
       dispatch({
         type: PASSWORD_RESET_CONFIRM_SUCCESS,
       });
+      return true;
     } catch (err) {
       dispatch({
         type: PASSWORD_RESET_CONFIRM_FAIL,
       });
+      return false;
     }
   };
 

@@ -17,44 +17,49 @@ import ResetPasswordConfirm from "./containers/Authentication/ResetPasswordConfi
 import Activate from "./containers/Authentication/Activate";
 import Images from "./containers/Images";
 import DoctorByImage from "./components/DoctorByImage";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 
 function App() {
   return (
-    <Provider store={store}>
-      <Router>
-        <Layout />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/reset-password" component={ResetPassword} />
-          <Route
-            exact
-            path="/password/reset/confirm/:uid/:token"
-            component={ResetPasswordConfirm}
-          />
-          <Route exact path="/activate/:uid/:token" component={Activate} />
-          <Route exact path="/doctors" component={Doctors} />
-          <Route exact path="/images" component={Images} />
-          <Route
-            exact
-            path="/images/:pid"
-            component={(routerProps) => (
-              <DoctorByImage pid={routerProps.match.params.pid} />
-            )}
-          />
-          <Route
-            exact
-            path="/profile/:pid"
-            component={(routerProps) => (
-              <DoctorProfile pid={routerProps.match.params.pid} />
-            )}
-          />
-          <Route component={NotFound} />
-        </Switch>
-        <Footer />
-      </Router>
-    </Provider>
+    <div className="app-container">
+      <ReactNotification />
+      <Provider store={store}>
+        <Router>
+          <Layout />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/reset-password" component={ResetPassword} />
+            <Route
+              exact
+              path="/password/reset/confirm/:uid/:token"
+              component={ResetPasswordConfirm}
+            />
+            <Route exact path="/activate/:uid/:token" component={Activate} />
+            <Route exact path="/doctors" component={Doctors} />
+            <Route exact path="/images" component={Images} />
+            <Route
+              exact
+              path="/images/:pid"
+              component={(routerProps) => (
+                <DoctorByImage pid={routerProps.match.params.pid} />
+              )}
+            />
+            <Route
+              exact
+              path="/profile/:pid"
+              component={(routerProps) => (
+                <DoctorProfile pid={routerProps.match.params.pid} />
+              )}
+            />
+            <Route component={NotFound} />
+          </Switch>
+          <Footer />
+        </Router>
+      </Provider>
+    </div>
   );
 }
 

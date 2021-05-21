@@ -54,13 +54,17 @@ const EditDoctorProfile = ({ pid }) => {
     fd.append("speciality", details.speciality);
     fd.append("_method", "PATCH");
     try {
-      const res = await axios.patch(
-        `${process.env.REACT_APP_API_URL}/api/doctor/profile/${pid}/`,
-        fd,
-        config
-      );
+      const res = await axios
+        .patch(
+          `${process.env.REACT_APP_API_URL}/api/doctor/profile/${pid}/`,
+          fd,
+          config
+        )
+        .then((res) => {
+          window.location.reload();
+        });
 
-      setTimeout("window.location.reload();", 2000);
+      // setTimeout("window.location.reload();", 2000);
 
       console.log(res);
     } catch (err) {
