@@ -79,13 +79,18 @@ const DoctorProfile = (props) => {
     fd.append("image", image, image.name);
     fd.append("_method", "PATCH");
     try {
-      const res = await axios.patch(
-        `${process.env.REACT_APP_API_URL}/api/doctor/profile/${props.pid}/`,
-        fd,
-        config
-      );
+      const res = await axios
+        .patch(
+          `${process.env.REACT_APP_API_URL}/api/doctor/profile/${props.pid}/`,
+          fd,
+          config
+        )
+        .then((res) => {
+          console.log(res);
+          window.location.reload();
+        });
 
-      setTimeout("window.location.reload();", 2000);
+      // setTimeout("window.location.reload();", 1000);
 
       console.log(res);
     } catch (err) {
@@ -102,7 +107,8 @@ const DoctorProfile = (props) => {
       .delete(`${process.env.REACT_APP_API_URL}/api/doctor/schedule/${id}/`)
       .then((res) => {
         console.log(res);
-        setTimeout("window.location.reload();", 2000);
+        window.location.reload();
+        // setTimeout("window.location.reload();", 2000);
       })
       .catch((err) => {
         console.log(err);
@@ -124,7 +130,8 @@ const DoctorProfile = (props) => {
       .post(`${process.env.REACT_APP_API_URL}/api/doctor/schedule/`, fd, config)
       .then((res) => {
         console.log(res);
-        setTimeout("window.location.reload();", 2000);
+        window.location.reload();
+        // setTimeout("window.location.reload();", 2000);
       })
       .catch((err) => {
         console.log(err);
