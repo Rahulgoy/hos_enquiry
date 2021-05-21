@@ -127,7 +127,7 @@ ENV/
 env.bak/
 venv.bak/
 pythonenv*
-
+./backend/hos_enquiry/.env
 # Spyder project settings
 .spyderproject
 .spyproject
