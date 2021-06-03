@@ -64,7 +64,17 @@ const Search = ({ fetchfilteredDoctors }) => {
                   <div class="wpcf7-response-output" aria-hidden="true"></div>
                 </form>
               </div>
-              <div className="col-md-4 bar-btn text-right">
+              <div
+                style={{
+                  backgroundColor: "#0cb8b6",
+                  padding: "15px 35px",
+                  fontWeight: "600",
+                  margin: "auto",
+                  marginTop: "10px",
+                  letterSpacing: 1,
+                  width: "15vw",
+                }}
+              >
                 <Link to="/images">SEARCH BY IMAGES</Link>
               </div>
             </div>

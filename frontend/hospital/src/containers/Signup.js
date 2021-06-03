@@ -87,11 +87,6 @@ const Signup = ({ signup, isAuthenticated }) => {
               <div className="col-md-8 col-md-offset-2 contact-form">
                 <div className="site-heading text-center">
                   <h2>Register</h2>
-                  <p>
-                    Our next drew much you with rank. Tore many held age hold
-                    rose than our. She literature sentiments any contrasted. Set
-                    aware joy sense young now tears china shy.
-                  </p>
                 </div>
                 <div
                   role="form"
@@ -202,7 +197,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                       </div>
                     </div>
                   </form>
-                  <button
+                  {/* <button
                     className="btn btn-danger mt-3"
                     onClick={continueWithGoogle}
                   >
@@ -214,7 +209,7 @@ const Signup = ({ signup, isAuthenticated }) => {
                     onClick={continueWithFacebook}
                   >
                     Continue With Facebook
-                  </button>
+                  </button> */}
                   <p>
                     Already have an account? <Link to="/login"> Log In</Link>
                   </p>

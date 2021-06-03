@@ -61,11 +61,6 @@ const Login = ({ login, isAuthenticated }) => {
               <div className="col-md-8 col-md-offset-2 contact-form">
                 <div className="site-heading text-center">
                   <h2>Log In</h2>
-                  <p>
-                    Our next drew much you with rank. Tore many held age hold
-                    rose than our. She literature sentiments any contrasted. Set
-                    aware joy sense young now tears china shy.
-                  </p>
                 </div>
                 <div
                   role="form"
@@ -142,8 +137,8 @@ const Login = ({ login, isAuthenticated }) => {
                   </form>
                   <p>
                     Don't have an account? <Link to="/signup"> Sign Up</Link>
-                  </p>
-                  <p>
+                    <br />
+                    <br />
                     Forgot your password?{" "}
                     <Link to="/reset-password">Reset Password</Link>
                   </p>
