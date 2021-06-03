@@ -16,18 +16,23 @@ const ImagesCard = ({ image }) => {
             <img src={image.img} alt="Thumb" style={{ height: "420px" }} />
           </div>
 
-          <div className="info">
+          <div className="info" style={{ padding: "25px 30px 30px" }}>
             <Link to={`/images/${image.key}/`}>
-              <Button
-                variant="contained"
-                size="large"
-                color="secondary"
+              <button
+                style={{
+                  backgroundColor: "#0cb8b6",
+                  color: "white",
+                  padding: "5px 10px",
+                  fontWeight: "400",
+                  margin: "auto",
+                  border: "none",
+                  marginTop: 0,
+                }}
                 onClick={handleClick}
               >
                 {image.name}
-              </Button>
+              </button>
             </Link>
-            <div className="appoinment-btn"></div>
           </div>
         </div>
       </div>

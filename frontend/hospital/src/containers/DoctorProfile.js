@@ -280,12 +280,16 @@ const DoctorProfile = (props) => {
                                 <div class="pull-right">
                                   {" "}
                                   {doctor.open} &#8211; {doctor.close}{" "}
-                                  <IconButton
-                                    onClick={() => deletesch(doctor.id)}
-                                    className="button"
-                                  >
-                                    <DeleteIcon color="secondary" />
-                                  </IconButton>
+                                  {props.auth.isAuthenticated &&
+                                  props.auth.user.id &&
+                                  props.auth.user.id === profiles.id ? (
+                                    <IconButton
+                                      onClick={() => deletesch(doctor.id)}
+                                      className="button"
+                                    >
+                                      <DeleteIcon color="secondary" />
+                                    </IconButton>
+                                  ) : null}
                                 </div>
                               </li>
                             );

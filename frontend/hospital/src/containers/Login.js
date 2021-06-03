@@ -69,10 +69,6 @@ const Login = ({ login, isAuthenticated }) => {
                   lang="en-US"
                   dir="ltr"
                 >
-                  <div className="screen-reader-response">
-                    <p role="status" aria-live="polite" aria-atomic="true"></p>{" "}
-                    <ul></ul>
-                  </div>
                   <form
                     action="/demosd/medihub/?page_id=282#wpcf7-f234-p282-o1"
                     method="POST"
@@ -135,9 +131,9 @@ const Login = ({ login, isAuthenticated }) => {
                       </div>
                     </div>
                   </form>
-                  <p>
+
+                  <p style={{ marginTop: "5px" }}>
                     Don't have an account? <Link to="/signup"> Sign Up</Link>
-                    <br />
                     <br />
                     Forgot your password?{" "}
                     <Link to="/reset-password">Reset Password</Link>

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 // import Alert from "./Alert";
 import { FaBars, FaSearch } from "react-icons/fa";
-
+import logo from "../images/l4.png";
 const Navbar = ({ isAuthenticated, logout, auth }) => {
   // var retrievedObject = localStorage.getItem("token");
   // console.log(auth.user.id);
@@ -101,11 +101,7 @@ const Navbar = ({ isAuthenticated, logout, auth }) => {
                 <FaBars />
               </button>
               <Link className="navbar-brand" to="/">
-                <img
-                  src="http://sttheme.com/demosd/medihub/wp-content/uploads/2019/06/logo.png"
-                  className="logo"
-                  alt="Logo"
-                />
+                <img src={logo} className="logo" alt="Logo" />
               </Link>
             </div>
             <div className="collapse navbar-collapse" id="navbar-menu">

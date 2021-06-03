@@ -72,7 +72,7 @@ const Search = ({ fetchfilteredDoctors }) => {
                   margin: "auto",
                   marginTop: "10px",
                   letterSpacing: 1,
-                  width: "15vw",
+                  width: "20%",
                 }}
               >
                 <Link to="/images">SEARCH BY IMAGES</Link>

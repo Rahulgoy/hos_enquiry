@@ -28,6 +28,9 @@ const Images = () => {
       >
         <div className="container">
           <div className="row"></div>
+          <div class="col-md-12">
+            <h2 style={{ margin: "0 14vw" }}>Search Doctors by Images</h2>
+          </div>
         </div>
       </div>
       <div
